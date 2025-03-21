@@ -11,7 +11,7 @@ const cors = require("cors");
 const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const path = require("path"); // Import path module
+const path = require("path");
 
 dotenv.config();
 app.use(express.json());
@@ -37,7 +37,6 @@ const storage = new CloudinaryStorage({
         const allowedFormats = ["png", "jpg", "jpeg", "webp"];
         const fileFormat = file.mimetype.split("/")[1];
         
-        // Ensure only PNG, JPG, and JPEG are allowed
         if (!allowedFormats.includes(fileFormat)) {
             return Promise.reject(new Error("Invalid file format. Only PNG, JPG, and JPEG are allowed."));
         }
@@ -70,19 +69,15 @@ app.use("/api/posts", postRoute);
 app.use("/api/comments", commentRoute);
 app.use("/api/stats", statsRoute);
 
+// Serve static files from the React build folder
+app.use(express.static(path.join(__dirname, "../discuss-app/build")));
+
 // Serve index.html for all unknown routes (Fallback for React Router)
-app.use(express.static("build")); // Serve static files from the build folder
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "../discuss-app/build", "index.html"));
 });
 
 // Start Server
-app.listen("7733" || process.env.PORT, () => {
+app.listen(process.env.PORT || "7733", () => {
     console.log("Backend is running.");
 });
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
-});
-
-module.exports = app;
