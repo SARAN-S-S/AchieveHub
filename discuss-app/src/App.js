@@ -43,7 +43,7 @@ function App() {
             user?.role === "admin" ? (
               <Navigate to="/dashboard" />
             ) : (
-              user ? <Home /> : <Navigate to="/login" />
+               <Home /> 
             )
           }
         />
