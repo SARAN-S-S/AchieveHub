@@ -13,7 +13,7 @@ export default function Home() {
   const postsPerPage = 8;
   const { search } = useLocation();
 
-  const apiBaseUrl = https://api-e6k7.onrender.com || "http://localhost:7733";
+  const apiBaseUrl = "https://api-e6k7.onrender.com" || "http://localhost:7733";
 
   useEffect(() => {
     const fetchPosts = async () => {
