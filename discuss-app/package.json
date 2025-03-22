@@ -1,6 +1,7 @@
 {
   "name": "discuss-app",
   "version": "0.1.0",
+  "homepage": "https://achievehub-blog.onrender.com",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
