@@ -12,18 +12,20 @@ export default function FilterPosts() {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   const fetchPosts = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.get(`/api/posts?category=${category}&year=${year}`);
+      const res = await axios.get(`${apiBaseUrl}/api/posts?category=${category}&year=${year}`);
       setPosts(res.data);
     } catch (err) {
       console.error("Error fetching posts:", err);
       setError("Failed to load posts. Please try again.");
     }
     setLoading(false);
-  }, [category, year]);
+  }, [category, year, apiBaseUrl]);
 
   useEffect(() => {
     fetchPosts();

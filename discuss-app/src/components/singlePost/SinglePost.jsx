@@ -46,6 +46,9 @@ export default function SinglePost() {
   const [yearError, setYearError] = useState("");
   const [commentError, setcommentError] = useState("");
 
+
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   useEffect(() => {
     if (editingComment && textareaRef.current) {
       textareaRef.current.focus();
@@ -64,8 +67,8 @@ export default function SinglePost() {
     const getPostData = async () => {
       try {
         const [postRes, commentsRes] = await Promise.all([
-          axios.get(`/api/posts/${path}`),
-          axios.get(`/api/comments/${path}`)
+          axios.get(`${apiBaseUrl}/api/posts/${path}`),
+          axios.get(`${apiBaseUrl}/api/comments/${path}`)
         ]);
         const postData = postRes.data;
         setPost(postData);
@@ -89,7 +92,7 @@ export default function SinglePost() {
       }
     };
     getPostData();
-  }, [path, user]);
+  }, [path, user , apiBaseUrl]);
 
 
   const handleFileChange = (e) => {
@@ -131,14 +134,14 @@ export default function SinglePost() {
       }
 
       if (liked) {
-        await axios.post(`/api/posts/${post._id}/unlike`);
+        await axios.post(`${apiBaseUrl}/api/posts/${post._id}/unlike`);
         setLikes(prevLikes => prevLikes - 1);
         setLiked(false);
 
         const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
         localStorage.setItem("likedPosts", JSON.stringify(likedPosts.filter(id => id !== post._id)));
       } else {
-        await axios.post(`/api/posts/${post._id}/like`);
+        await axios.post(`${apiBaseUrl}/api/posts/${post._id}/like`);
         setLikes(prevLikes => prevLikes + 1);
         setLiked(true);
 
@@ -152,7 +155,7 @@ export default function SinglePost() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/api/posts/${post._id}`, { data: { username: user.username } });
+      await axios.delete(`${apiBaseUrl}/api/posts/${post._id}`, { data: { username: user.username } });
       window.location.replace("/");
     } catch (err) {
       console.error("Error deleting post:", err);
@@ -201,7 +204,7 @@ export default function SinglePost() {
         const data = new FormData();
         data.append("file", file);
         try {
-          const uploadRes = await axios.post("/api/upload", data);
+          const uploadRes = await axios.post(`${apiBaseUrl}/api/upload`, data);
           updatedPost.photo = uploadRes.data.url;
         } catch (err) {
           console.error("Error uploading file:", err);
@@ -210,7 +213,7 @@ export default function SinglePost() {
         }
       }
 
-      const res = await axios.put(`/api/posts/${post._id}`, updatedPost);
+      const res = await axios.put(`${apiBaseUrl}/api/posts/${post._id}`, updatedPost);
       setPost(res.data);
       setUpdateMode(false);
       setFile(null);
@@ -232,7 +235,7 @@ export default function SinglePost() {
       return;
     }
     try {
-      const res = await axios.post("/api/comments", {
+      const res = await axios.post(`${apiBaseUrl}/api/comments`, {
         postId: post._id,
         userId: user._id,
         username: user.username,
@@ -268,7 +271,7 @@ export default function SinglePost() {
       const comment = findCommentById(comments, commentId);
 
       if (user._id === comment.userId || user.role === "admin") {
-        await axios.delete(`/api/comments/${commentId}`, { 
+        await axios.delete(`${apiBaseUrl}/api/comments/${commentId}`, { 
           data: { userId: user._id }
         });
 
@@ -325,7 +328,7 @@ export default function SinglePost() {
       }
       const comment = findCommentById(comments, commentId);
       if (user._id === comment.userId || user.role === "admin") {
-        const res = await axios.put(`/api/comments/${commentId}`, {
+        const res = await axios.put(`${apiBaseUrl}/api/comments/${commentId}`, {
           userId: user._id,
           text: editedCommentText,
         });
@@ -369,7 +372,7 @@ export default function SinglePost() {
 
   const handlePostReply = async (commentId) => {
     try {
-      const res = await axios.post("/api/comments", {
+      const res = await axios.post(`${apiBaseUrl}/api/comments`, {
         postId: post._id,
         userId: user._id,
         username: user.username,

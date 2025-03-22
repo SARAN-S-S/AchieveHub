@@ -12,6 +12,8 @@ export default function Settings() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   // Sync username state with user context
   useEffect(() => {
     setUsername(user.username);
@@ -36,7 +38,7 @@ export default function Settings() {
       const data = new FormData();
       data.append("file", file);
       try {
-        const uploadRes = await axios.post("/api/upload", data);
+        const uploadRes = await axios.post(`${apiBaseUrl}/api/upload`, data);
         updatedUser.profilePic = uploadRes.data.url; // Update profilePic with the new URL
       } catch (err) {
         console.error("File upload failed:", err);
@@ -44,7 +46,7 @@ export default function Settings() {
     }
 
     try {
-      const res = await axios.put(`/api/users/${user._id}`, updatedUser);
+      const res = await axios.put(`${apiBaseUrl}/api/users/${user._id}`, updatedUser);
       setSuccess(true);
 
       // Update the user in the context with the new data, including the profilePic

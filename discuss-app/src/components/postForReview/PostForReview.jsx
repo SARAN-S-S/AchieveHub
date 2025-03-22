@@ -33,12 +33,15 @@ export default function PostForReview() {
   const [descError, setDescError] = useState("");
   const [categoryError, setCategoryError] = useState("");
   const [yearError, setYearError] = useState("");
+
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
   
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`/api/posts/${postId}`);
+
+        const res = await axios.get(`${apiBaseUrl}/api/posts/${postId}`);
         setPost(res.data);
         setTitle(res.data.title);
         setDesc(res.data.desc);
@@ -54,7 +57,7 @@ export default function PostForReview() {
       }
     };
     fetchPost();
-  }, [postId]);
+  }, [postId, apiBaseUrl]);
 
   useEffect(() => {
     const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
@@ -94,7 +97,7 @@ export default function PostForReview() {
   const handleApprove = async () => {
     setLoading(true); // Start loading
     try {
-      await axios.put(`/api/posts/approve/${postId}`);
+      await axios.put(`${apiBaseUrl}/api/posts/approve/${postId}`);
       navigate("/approval-pending");
     } catch (err) {
       console.error("Error approving post:", err);
@@ -110,7 +113,7 @@ export default function PostForReview() {
     }
     setLoading(true); // Start loading
     try {
-      await axios.put(`/api/posts/reject/${postId}`, { reason: rejectionReason });
+      await axios.put(`${apiBaseUrl}/api/posts/reject/${postId}`, { reason: rejectionReason });
       navigate("/approval-pending");
     } catch (err) {
       console.error("Error rejecting post:", err);
@@ -155,7 +158,7 @@ export default function PostForReview() {
       const data = new FormData();
       data.append("file", file);
       try {
-        const uploadRes = await axios.post("/api/upload", data);
+        const uploadRes = await axios.post(`${apiBaseUrl}/api/upload`, data);
         updatedPost.photo = uploadRes.data.url; // Update the photo URL
       } catch (err) {
         console.error("Error uploading file:", err);
@@ -165,7 +168,7 @@ export default function PostForReview() {
     }
 
     try {
-      await axios.put(`/api/posts/edit/${postId}`, updatedPost);
+      await axios.put(`${apiBaseUrl}/api/posts/edit/${postId}`, updatedPost);
       setPost({ ...post, ...updatedPost }); // Update the post state with the new data
       setUpdateMode(false);
       setFile(null);
@@ -197,7 +200,7 @@ export default function PostForReview() {
   const handleLike = async () => {
     try {
       if (liked) {
-        await axios.post(`/api/posts/${postId}/unlike`);
+        await axios.post(`${apiBaseUrl}/api/posts/${postId}/unlike`);
         setLikes(likes - 1);
         setLiked(false);
         const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];

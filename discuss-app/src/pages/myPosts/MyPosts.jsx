@@ -16,10 +16,12 @@ export default function MyPosts() {
   const postsPerPage = 10;
   const [loading, setLoading] = useState(true);
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   const fetchPosts = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`/api/posts/my-posts?username=${user.username}&page=${currentPage}&limit=${postsPerPage}&search=${search}`);
+      const res = await axios.get(`${apiBaseUrl}/api/posts/my-posts?username=${user.username}&page=${currentPage}&limit=${postsPerPage}&search=${search}`);
       setPosts(res.data.posts);
       setTotalPosts(res.data.total);
     } catch (err) {
@@ -27,7 +29,7 @@ export default function MyPosts() {
     } finally {
       setLoading(false);
     }
-  }, [user, currentPage, search]);
+  }, [user, currentPage, search , apiBaseUrl]);
 
   useEffect(() => {
     fetchPosts();
@@ -35,7 +37,7 @@ export default function MyPosts() {
 
   const handleBulkDelete = async () => {
     try {
-      await axios.post("/api/posts/bulk-delete", { postIds: selectedPosts });
+      await axios.post(`${apiBaseUrl}/api/posts/bulk-delete`, { postIds: selectedPosts });
       fetchPosts();
       setSelectedPosts([]);
     } catch (err) {
@@ -45,7 +47,7 @@ export default function MyPosts() {
 
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`/api/posts/${postId}`, { data: { username: user.username } });
+      await axios.delete(`${apiBaseUrl}/api/posts/${postId}`, { data: { username: user.username } });
       fetchPosts();
     } catch (err) {
       console.error("Error deleting post:", err);

@@ -30,6 +30,7 @@ export default function Signup() {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
+   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
    const { dispatch } = useContext(Context);
     
 
@@ -45,7 +46,7 @@ export default function Signup() {
     if (admin) {
       try {
         // Send the login request to backend with predefined admin details
-        const res = await axios.post("/api/auth/admin-login", {
+        const res = await axios.post(`${apiBaseUrl}/api/auth/admin-login`, {
           email,
           password,
           username: admin.username, 

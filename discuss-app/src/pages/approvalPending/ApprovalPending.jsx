@@ -15,10 +15,12 @@ export default function ApprovalPendingCustom() {
   const [isLoading, setIsLoading] = useState(true);
   const postsPerPage = 10;
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   const fetchPosts = useCallback(async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get(`/api/posts/pending?page=${currentPage}&limit=${postsPerPage}`);
+      const res = await axios.get(`${apiBaseUrl}/api/posts/pending?page=${currentPage}&limit=${postsPerPage}`);
       setPosts(res.data.posts);
 
       // Ensure total is a valid number and greater than 0
@@ -29,7 +31,7 @@ export default function ApprovalPendingCustom() {
     } finally {
       setIsLoading(false);
     }
-  }, [currentPage]);
+  }, [currentPage, apiBaseUrl]);
 
   useEffect(() => {
     fetchPosts();
@@ -41,7 +43,7 @@ export default function ApprovalPendingCustom() {
 
   const handleApprove = async (postId) => {
     try {
-      await axios.put(`/api/posts/approve/${postId}`);
+      await axios.put(`${apiBaseUrl}/api/posts/approve/${postId}`);
       fetchPosts();
     } catch (err) {
       console.error("Error approving post:", err);
@@ -50,7 +52,7 @@ export default function ApprovalPendingCustom() {
 
   const handleBulkApprove = async () => {
     try {
-      await Promise.all(selectedPosts.map((postId) => axios.put(`/api/posts/approve/${postId}`)));
+      await Promise.all(selectedPosts.map((postId) => axios.put(`${apiBaseUrl}/api/posts/approve/${postId}`)));
       fetchPosts();
       setSelectedPosts([]);
     } catch (err) {
@@ -64,7 +66,7 @@ export default function ApprovalPendingCustom() {
       return;
     }
     try {
-      await axios.put(`/api/posts/reject/${postId}`, { reason: rejectionReason[postId] });
+      await axios.put(`${apiBaseUrl}/api/posts/reject/${postId}`, { reason: rejectionReason[postId] });
       setRejectionReason((prev) => ({ ...prev, [postId]: "" }));
       fetchPosts();
     } catch (err) {

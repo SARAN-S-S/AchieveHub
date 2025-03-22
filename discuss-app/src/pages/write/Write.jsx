@@ -16,6 +16,9 @@ export default function Write() {
   const [loading, setLoading] = useState(false); // Loading state
   const { user } = useContext(Context);
 
+  // Define the backend URL using environment variables
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (!selectedFile) {
@@ -68,20 +71,22 @@ export default function Write() {
       const data = new FormData();
       data.append("file", file);
       try {
-        const uploadRes = await axios.post("/api/upload", data);
+        const uploadRes = await axios.post(`${apiBaseUrl}/api/upload`, data);
         newPost.photo = uploadRes.data.url;
       } catch (err) {
         console.error("Error uploading file:", err);
+        setLoading(false); // Stop loading if file upload fails
+        return;
       }
     }
 
     try {
-      const res = await axios.post("/api/posts", newPost);
+      const res = await axios.post(`${apiBaseUrl}/api/posts`, newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (err) {
       console.error("Error creating post:", err);
     } finally {
-      setTimeout(() => setLoading(false), 3000);
+      setLoading(false); // Stop loading
     }
   };
 

@@ -10,9 +10,11 @@ export default function Login() {
   const { dispatch } = useContext(Context);
   const navigate = useNavigate();
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   const handleGoogleLogin = async (credentialResponse) => {
     try {
-      const res = await axios.post("/api/auth/google", {
+      const res = await axios.post(`${apiBaseUrl}/api/auth/google`, {
         token: credentialResponse.credential,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });

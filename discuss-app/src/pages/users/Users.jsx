@@ -13,15 +13,17 @@ const UsersPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 5;
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get("/api/stats/users");
+      const res = await axios.get(`${apiBaseUrl}/api/stats/users`);
       setStudentsCount(res.data.students || 0);
       setAdminsCount(res.data.admins || 0);
       setUsers(res.data.users || []);
     };
     fetchData();
-  }, []);
+  }, [apiBaseUrl]);
 
   const totalUsers = studentsCount + adminsCount;
   const studentsPercentage = totalUsers > 0 ? ((studentsCount / totalUsers) * 100).toFixed(2) : 0;

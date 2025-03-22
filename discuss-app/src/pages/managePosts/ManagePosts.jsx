@@ -13,17 +13,19 @@ export default function ManagePostsCustom() {
   const [postsPerPage] = useState(10);
   const [isLoading, setIsLoading] = useState(true);
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   const fetchPosts = useCallback(async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get(`/api/posts?search=${search}`);
+      const res = await axios.get(`${apiBaseUrl}/api/posts?search=${search}`);
       setPosts(res.data);
     } catch (err) {
       console.error("Error fetching posts:", err);
     } finally {
       setIsLoading(false);
     }
-  }, [search]);
+  }, [search, apiBaseUrl]);
 
   useEffect(() => {
     fetchPosts();
@@ -31,7 +33,7 @@ export default function ManagePostsCustom() {
 
   const handleBulkDelete = async () => {
     try {
-      await axios.post("/api/posts/bulk-delete", { postIds: selectedPosts });
+      await axios.post(`${apiBaseUrl}/api/posts/bulk-delete`, { postIds: selectedPosts });
       fetchPosts();
       setSelectedPosts([]);
     } catch (err) {

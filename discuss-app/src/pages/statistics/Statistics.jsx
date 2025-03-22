@@ -11,11 +11,14 @@ const StatisticsPage = () => {
   const [noPostsFound, setNoPostsFound] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
+  
   const fetchData = useCallback(async () => {
     setLoading(true);
     setNoPostsFound(false); 
     try {
-      const res = await axios.get(`/api/stats/monthly-posts?month=${month}&year=${year}`);
+      const res = await axios.get(`${apiBaseUrl}/api/stats/monthly-posts?month=${month}&year=${year}`);
       setMonthlyPosts(res.data.posts);
       setTotalPosts(res.data.totalPosts);
 
@@ -31,7 +34,7 @@ const StatisticsPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [month, year]);
+  }, [month, year , apiBaseUrl]);
 
   useEffect(() => {
     fetchData();

@@ -12,9 +12,14 @@ const PostsPage = () => {
   const [postsByEventType, setPostsByEventType] = useState({});
   const [postsByYear, setPostsByYear] = useState({});
 
+
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
+  
+
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get("/api/stats/posts");
+      const res = await axios.get(`${apiBaseUrl}/api/stats/posts`);
       setTotalPosts(res.data.totalPosts);
 
       // Initialize counts as 0 for all event types
@@ -44,7 +49,7 @@ const PostsPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [apiBaseUrl]);
 
   // Calculate percentages
   const calculatePercentage = (count) =>

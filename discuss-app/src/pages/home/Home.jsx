@@ -13,11 +13,13 @@ export default function Home() {
   const postsPerPage = 8;
   const { search } = useLocation();
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
+
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("/api/posts" + search);
+        const res = await axios.get(`${apiBaseUrl}/api/posts` + search);
         setPosts(res.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -25,7 +27,7 @@ export default function Home() {
       setLoading(false);
     };
     fetchPosts();
-  }, [search]);
+  }, [search, apiBaseUrl]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
