@@ -110,12 +110,12 @@ export default function SinglePost() {
       if (user && post._id) {
         try {
           // Track the view (increment if first time)
-          await axios.post(`/api/posts/${post._id}/view`, { 
+          await axios.post(`${apiBaseUrl}/api/posts/${post._id}/view`, { 
             userId: user._id 
           });
           
           // Then immediately fetch the updated view count
-          const updatedPost = await axios.get(`/api/posts/${post._id}`);
+          const updatedPost = await axios.get(`${apiBaseUrl}/api/posts/${post._id}`);
           setViewCount(updatedPost.data.viewCount);
         } catch (err) {
           console.error("Error tracking view:", err);
