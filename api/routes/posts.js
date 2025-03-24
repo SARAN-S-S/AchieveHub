@@ -410,4 +410,47 @@ router.put("/edit/:id", async (req, res) => {
 });
 
 
+
+// Track post view
+router.post("/:id/view", async (req, res) => {
+  try {
+    const { userId } = req.body;
+    
+    if (!userId) {
+      return res.status(400).json({ message: "User ID is required" });
+    }
+
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    // Check if user has already viewed this post
+    const alreadyViewed = post.viewedBy.some(viewerId => 
+      viewerId.toString() === userId.toString()
+    );
+
+    if (!alreadyViewed) {
+      // Increment view count and add user to viewedBy array
+      const updatedPost = await Post.findByIdAndUpdate(
+        req.params.id,
+        {
+          $inc: { viewCount: 1 },
+          $addToSet: { viewedBy: userId }
+        },
+        { new: true }
+      );
+      
+      return res.status(200).json(updatedPost);
+    }
+
+    res.status(200).json(post);
+  } catch (err) {
+    console.error("Error tracking post view:", err);
+    res.status(500).json({ message: "Failed to track post view" });
+  }
+});
+
+
+
 module.exports = router;

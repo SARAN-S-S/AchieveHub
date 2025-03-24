@@ -52,6 +52,9 @@ export default function SinglePost() {
   const [videoError, setVideoError] = useState(""); // New state for video error
   const [showVideo, setShowVideo] = useState(false); // Toggle video visibility
 
+  // Inside your SinglePost component, add this state
+  const [viewCount, setViewCount] = useState(post.viewCount || 0);
+
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
 
   useEffect(() => {
@@ -85,6 +88,7 @@ export default function SinglePost() {
         setInitialPhoto(postData.photo || null);
         setInitialVideo(postData.video || null); // Set initial video
         setLikes(postData.likes || 0);
+        setViewCount(postData.viewCount || 0); // Initialize view count
         setComments(commentsRes.data);
         setLoading(false);
 
@@ -99,6 +103,28 @@ export default function SinglePost() {
     };
     getPostData();
   }, [path, user, apiBaseUrl]);
+
+  // Track post view and update view count
+  useEffect(() => {
+    const trackAndUpdateView = async () => {
+      if (user && post._id) {
+        try {
+          // Track the view (increment if first time)
+          await axios.post(`/api/posts/${post._id}/view`, { 
+            userId: user._id 
+          });
+          
+          // Then immediately fetch the updated view count
+          const updatedPost = await axios.get(`/api/posts/${post._id}`);
+          setViewCount(updatedPost.data.viewCount);
+        } catch (err) {
+          console.error("Error tracking view:", err);
+        }
+      }
+    };
+
+    trackAndUpdateView();
+  }, [user, post._id]); // Only run when user or post._id changes
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -748,6 +774,10 @@ export default function SinglePost() {
               <div className="like-section" onClick={handleLike}>
                 <FontAwesomeIcon icon={faThumbsUp} className={`like-icon ${liked ? "liked" : ""}`} />
                 <span className="like-count">{likes}</span>
+              </div>
+              <div className="singlePostViews">
+                  <span className="view-icon">👁️</span>
+                  <span className="view-count">{viewCount}</span> views
               </div>
             </div>
             <br></br>

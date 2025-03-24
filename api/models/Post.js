@@ -35,6 +35,14 @@ const PostSchema = new mongoose.Schema({
         type: String,
         default: "",
     },
+    viewCount: {
+        type: Number,
+        default: 0,
+    },
+    viewedBy: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }],
 }, 
     { timestamps: true }
 );
