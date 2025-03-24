@@ -1,210 +1,214 @@
 
 .postContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); 
-    gap: 30px 25px; 
-    justify-content: center;
-    padding: 20px;
-    background-color: #f8f9fa; 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); 
+  gap: 30px 25px; 
+  justify-content: center;
+  padding: 20px;
+  background-color: #f8f9fa; 
 }
 
 
 .postCard {
-    display: grid;
-    grid-template-columns: 120px 1fr; 
-    gap: 15px; 
-    width: 380px; 
-    margin: 0px 20px 30px 20px; 
-    padding: 15px;
-    background-color: #f0fbff;
-    border: 2px solid #9bbcd4;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-    align-items: center; 
-    height: 180px; 
+  display: grid;
+  grid-template-columns: 120px 1fr; 
+  gap: 15px; 
+  width: 380px; 
+  margin: 0px 20px 30px 20px; 
+  padding: 15px;
+  background-color: #f0fbff;
+  border: 2px solid #9bbcd4;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  align-items: center; 
+  height: 210px; 
 }
 
 
-
-
 .postCard:hover {
-    transform: scale(1.02);
-    border-color: #578fb7;
+  transform: scale(1.02);
+  border-color: #578fb7;
 }
 
 
 .postImg {
-    width: 100px; 
-    height: 100px; 
-    object-fit: cover;
-    border-radius: 6px;
-    align-self: center; 
+  width: 100px; 
+  height: 100px; 
+  object-fit: cover;
+  border-radius: 6px;
+  align-self: center; 
 }
 
 
 .postContent {
-    display: flex;
-    flex-direction: column;
-    gap: 6px; 
-    justify-content: center; 
+  display: flex;
+  flex-direction: column;
+  gap: 6px; 
+  justify-content: center; 
 }
 
 
 .postTags {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 4px;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 4px;
 }
 
 .postTag {
-    background: linear-gradient(135deg, #ff6f61 0%, #ff9966 100%);
-    padding: 3px 8px; 
-    border-radius: 10px;
-    font-size: 12px; 
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
+  background: linear-gradient(135deg, #ff6f61 0%, #ff9966 100%);
+  padding: 3px 8px; 
+  border-radius: 10px;
+  font-size: 12px; 
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 
 .postTag:hover {
-    background: linear-gradient(135deg, #ff4b3e 0%, #ff7b50 100%);
-    transform: scale(1.05);
+  background: linear-gradient(135deg, #ff4b3e 0%, #ff7b50 100%);
+  transform: scale(1.05);
 }
 
 
 .postTitle {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 18px; 
-    font-weight: 700;
-    cursor: pointer;
-    transition: color 0.3s ease-in-out;
-    text-transform: capitalize;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical;
-    line-height: 1.4em; 
-    max-height: 2.8em; 
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px; 
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  line-height: 1.4em; 
+  max-height: 2.8em; 
 }
 
 .postTitle:hover {
-    color: #0077b6;
+  color: #0077b6;
 }
 
 
 .postAuthorDate {
-    display: flex;
-    align-items: center;
-    font-family: 'Lora', serif;
-    font-size: 14px; 
-    color: #333; 
-    margin-top: 2px;
-    gap: 8px; 
+  display: flex;
+  align-items: center;
+  font-family: 'Lora', serif;
+  font-size: 14px; 
+  color: #333; 
+  margin-top: 2px;
+  gap: 8px; 
 }
 
 .authorName {
-    font-weight: bold;
-    color: #005073; 
+  font-weight: bold;
+  color: #005073; 
 }
 
 .postDate {
-    font-size: 13px;         
-    color: #333;              
-    background-color: #e6f2f5;
-    padding: 2px 6px;         
-    border-radius: 5px;       
-    font-weight: bold;        
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+  font-size: 13px;         
+  color: #333;              
+  background-color: #e6f2f5;
+  padding: 2px 6px;         
+  border-radius: 5px;       
+  font-weight: bold;        
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 
 
 .postDescription {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 14px; 
-    color: #444;
-    line-height: 18px;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical;
-    margin-top: 4px;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 14px; 
+  color: #444;
+  line-height: 18px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  margin-top: 4px;
 }
 
 
 /* Responsive adjustments for compact view */
 @media (max-width: 768px) {
-    .postCard {
-      grid-template-columns: 90px 1fr; 
-      width: 340px; 
-      padding: 12px;
-      height: auto; 
-    }
-  
-    .postTitle {
-      font-size: 16px; 
-    }
-  
-    .postAuthorDate,
-    .postDescription {
-      font-size: 13px; 
-    }
+  .postCard {
+    grid-template-columns: 90px 1fr; 
+    width: 340px; 
+    padding: 12px;
+    height: auto; 
   }
-  
-  @media (max-width: 480px) {
-    .postContainer {
-      padding: 15px; 
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-      gap: 20px 15px; 
-    }
-  
-    .postCard {
-      grid-template-columns: 70px 1fr; 
-      width: 280px; 
-      padding: 10px;
-      margin: 0px 10px 20px 10px; 
-      height: auto; 
-    }
-  
-    .postImg {
-      width: 60px; 
-      height: 60px;
-    }
-  
-    .postTitle {
-      font-size: 14px; 
-      -webkit-line-clamp: 2; 
-    }
-  
-    .postTags {
-      gap: 4px; 
-    }
-  
-    .postTag {
-      font-size: 10px; 
-      padding: 2px 6px;
-      border-radius: 8px;
-    }
-  
-    .postAuthorDate {
-      font-size: 12px; 
-      gap: 5px;
-    }
-  
-    .postDate {
-      font-size: 11px;
-      padding: 1px 4px;
-      border-radius: 4px;
-    }
-  
-    .postDescription {
-      font-size: 12px; 
-      -webkit-line-clamp: 2; 
-    }
+
+  .postTitle {
+    font-size: 16px; 
   }
+
+  .postImg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .postAuthorDate,
+  .postDescription {
+    font-size: 13px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .postContainer {
+    padding: 15px; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px 15px; 
+  }
+
+  .postCard {
+    grid-template-columns: 70px 1fr; 
+    width: 280px; 
+    padding: 10px;
+    margin: 0px 10px 20px 10px; 
+    height: auto; 
+  }
+
+  .postImg {
+    width: 60px; 
+    height: 60px;
+  }
+
+  .postTitle {
+    font-size: 14px; 
+    -webkit-line-clamp: 2; 
+  }
+
+  .postTags {
+    gap: 4px; 
+  }
+
+  .postTag {
+    font-size: 10px; 
+    padding: 2px 6px;
+    border-radius: 8px;
+  }
+
+  .postAuthorDate {
+    font-size: 12px; 
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .postDate {
+    font-size: 11px;
+    padding: 1px 4px;
+    border-radius: 4px;
+  }
+
+  .postDescription {
+    font-size: 12px; 
+    -webkit-line-clamp: 2; 
+  }
+}
