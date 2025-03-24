@@ -89,10 +89,12 @@ export default function ManagePostsCustom() {
                     <th>Author</th>
                     <th>Email</th>
                     <th>Date</th>
+                    <th>Image Status</th>
+                    <th>Video Status</th>
                     <th>Event Type 1</th>
                     <th>Event Type 2 (Optional)</th>
                     <th>Student Year</th>
-                    <th>Image</th>
+                    
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -116,12 +118,14 @@ export default function ManagePostsCustom() {
                       <td>{post.username}</td>
                       <td>{post.email}</td>
                       <td>{new Date(post.createdAt).toDateString()}</td>
+                      <td>{post.photo ? "Image" : "No Image"}</td>
+                      <td>{post.video ? "Video" : "No Video"}</td>
                       <td>{post.tags[0]}</td>
                       <td style={{ textAlign: "center", verticalAlign: "middle" }}>
                         {post.tags?.[2] ? post.tags[2] : "-"}
                       </td>
                       <td>{post.tags[1]}</td>
-                      <td>{post.photo ? "Image" : "No Image"}</td>
+                      
                       <td>
                         <Link to={`/post/${post._id}`} className="actionLinkCustom">
                           <FontAwesomeIcon icon={faPenToSquare} /> Edit

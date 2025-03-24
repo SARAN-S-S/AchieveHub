@@ -15,8 +15,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .singlePostImg {
   width: 600px;
   height: 400px;
@@ -297,6 +295,123 @@
 }
 
 
+/* Video Upload Section */
+.reviewVideoUploadContainer {
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border: 2px solid #007bff;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.reviewVideoUploadContainer:hover {
+  background: linear-gradient(135deg, #bbdefb, #90caf9);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.reviewVideoUploadContainer i {
+  font-size: 28px;
+  display: block;
+  color: #0d47a1;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.reviewVideoUploadContainer:hover i {
+  color: #002171;
+}
+
+.reviewVideoUploadContainer input {
+  display: none;
+}
+
+/* Video Preview and Controls */
+.reviewVideoContainer {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.reviewVideoPlayer {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.reviewVideoButtons {
+  margin-top: 10px; /* Space between video and buttons */
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
+}
+
+.reviewVideoButton, .reviewRemoveVideoButton {
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+  border: 2px solid black;
+  margin: 5px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: 0.3s;
+}
+
+.reviewVideoButton {
+  background-color: #007bff;
+  color: white;
+}
+
+.reviewVideoButton:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid rgb(43, 25, 123);
+}
+
+.reviewRemoveVideoButton {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.reviewRemoveVideoButton:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #b30000;
+}
+
+/* No Video Message */
+.no-video-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  color: #721c24;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #694246;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  margin: 20px auto;
+}
+
 
 /* Responsive styles for tablets */
 @media (max-width: 768px) {
@@ -394,6 +509,39 @@
   .review-error-message {
     font-size: 12px;
     padding: 8px;
+  }
+
+  .singleVideoUploadContainer {
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .singleVideoUploadContainer i {
+    font-size: 24px;
+  }
+
+  .singleVideoPlayer {
+    width: 90%;
+  }
+
+  .singleVideoButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .singleVideoButton,
+  .singleRemoveVideoButton {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .no-video-message {
+    width: 50%;
+    font-size: 16px;
+    padding: 12px;
   }
 }
 
@@ -538,5 +686,48 @@
     max-height: 200px;
     border-radius: 8px;
     margin-bottom: 10px;
+  }
+
+  .error-message {
+    font-size: 14px;
+    padding: 8px;
+    max-width: 300px;
+  }
+
+  .singleVideoUploadContainer {
+    width: 45px;
+    height: 45px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .singleVideoUploadContainer i {
+    font-size: 20px;
+  }
+
+  .singleVideoContainer {
+    margin-top: 15px;
+  }
+
+  .singleVideoPlayer {
+    width: 100%;
+  }
+
+  .singleVideoButtons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .singleVideoButton,
+  .singleRemoveVideoButton {
+    width: 90%;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .no-video-message {
+    width: 70%;
+    font-size: 14px;
+    padding: 10px;
   }
 }

@@ -701,8 +701,120 @@ reply-icon {
     margin: 10px auto;
   }
 
+/* Video Upload Container */
+.singleVideoUploadContainer {
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    border: 2px solid #007bff;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .singleVideoUploadContainer:hover {
+    background: linear-gradient(135deg, #bbdefb, #90caf9);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .singleVideoUploadContainer i {
+    font-size: 28px;
+    display: block;
+    color: #0d47a1;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .singleVideoUploadContainer:hover i {
+    color: #002171;
+  }
+  
+  #singleVideoInput {
+    display: none;
+  }
+  
+  /* Video Container */
+  .singleVideoContainer {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the video */
+  }
+  
+  .singleVideoPlayer {
+    max-width: 100%;
+    width: 500px; /* Adjust width as needed */
+    border-radius: 10px;
+  }
+  
+  /* Buttons Wrapper */
+  .singleVideoButtons {
+    margin-top: 10px; /* Space between video and buttons */
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .singleVideoButton,
+  .singleRemoveVideoButton {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid black;
+  }
+  
+  .singleVideoButton {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .singleVideoButton:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid rgb(43, 25, 123);
+  }
+  
+  .singleRemoveVideoButton {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  .singleRemoveVideoButton:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #b30000;
+  }
 
+  .no-video-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    color: #721c24;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    padding: 15px;
+    border: 2px solid #694246;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin: 20px auto;
+  }
 
+  
 /* Responsive Design adjustments */
 @media (max-width: 768px) {
     .singlePostWrapper {
@@ -794,6 +906,47 @@ reply-icon {
         width: 100%;
         font-size: 14px;
     }
+
+    .error-message {
+        font-size: 14px;
+        padding: 8px;
+        max-width: 300px;
+      }
+    
+      .singleVideoUploadContainer {
+        width: 55px;
+        height: 55px;
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+    
+      .singleVideoUploadContainer i {
+        font-size: 24px;
+      }
+    
+      .singleVideoContainer {
+        width: 100%;
+      }
+    
+      .singleVideoPlayer {
+        width: 90%;
+      }
+    
+      .singleVideoButtons {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .singleVideoButton,
+      .singleRemoveVideoButton {
+        width: 80%;
+      }
+    
+      .no-video-message {
+        width: 30%;
+        font-size: 16px;
+        padding: 12px;
+      }
 }
 
 /* Specific adjustments for 480px and below */
@@ -902,4 +1055,44 @@ reply-icon {
     .like-count {
         font-size: 14px;
     }
+
+    .error-message {
+        font-size: 12px;
+        padding: 6px;
+        max-width: 250px;
+      }
+    
+      .singleVideoUploadContainer {
+        width: 50px;
+        height: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    
+      .singleVideoUploadContainer i {
+        font-size: 20px;
+      }
+    
+      .singleVideoPlayer {
+        width: 100%;
+      }
+    
+      .singleVideoButtons {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+    
+      .singleVideoButton,
+      .singleRemoveVideoButton {
+        width: 100%;
+        font-size: 12px;
+        padding: 6px;
+      }
+    
+      .no-video-message {
+        width: 30%;
+        font-size: 14px;
+        padding: 10px;
+      }
 }

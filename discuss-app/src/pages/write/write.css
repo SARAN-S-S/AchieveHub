@@ -1,276 +1,436 @@
 
 .writeFile {
-    display: none;
+  display: none;
 }
 
 .write {
-    padding-top: 50px;
-    background: linear-gradient(135deg, #f7f8fa 0%, #eaeff5 50%, #f7f8fa 100%);
-    --border-color: rgba(0, 0, 0, 0.25);
+  padding-top: 50px;
+  background: linear-gradient(135deg, #f7f8fa 0%, #eaeff5 50%, #f7f8fa 100%);
+  --border-color: rgba(0, 0, 0, 0.25);
 }
 
 .writeImg {
-    width: 600px;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 3px solid black;
-    display: block;
-    margin: 0 auto;
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid black;
+  display: block;
+  margin: 0 auto;
 }
 
 .writeImg:hover {
-    border-color: #8ab32b;
+  border-color: #8ab32b;
 }
 
 .writeForm {
-    position: relative;
-    border: none;
-    padding: 20px;
-    border-radius: 10px;
+  position: relative;
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .writeFormGroup {
-    margin-left: 100px;
-    margin-right: 100px;
-    display: flex;
-    align-items: center;
-    border: 2px solid var(--border-color);
-    padding: 15px; 
-    border-radius: 8px; 
-    margin-bottom: 25px;
-    background: #ffffff; 
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1); 
-    transition: border-color 0.3s ease;
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 15px; 
+  border-radius: 8px; 
+  margin-bottom: 25px;
+  background: #ffffff; 
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1); 
+  transition: border-color 0.3s ease;
 }
 
 .writeFormGroup:focus-within {
-    border-color: rgba(0, 77, 77, 0.8); 
-    box-shadow: 0 0 5px rgba(0, 77, 77, 0.3); 
+  border-color: rgba(0, 77, 77, 0.8); 
+  box-shadow: 0 0 5px rgba(0, 77, 77, 0.3); 
 }
 
 .writeIcon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    color: #004d4d;
-    cursor: pointer;
-    margin-right: 10px; 
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #004d4d;
+  cursor: pointer;
+  margin-right: 10px; 
 }
 
 .writeInput {
-    font-size: 18px;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    background: #f4f8fb;
-    border-radius: 6px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    margin: 5px 0; 
-    line-height: 1.5; 
+  font-size: 18px;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  background: #f4f8fb;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin: 5px 0; 
+  line-height: 1.5; 
 }
 
 .writeInput:focus {
-    outline: none;
-    box-shadow: 0 0 4px rgba(0, 77, 77, 0.4);
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 77, 77, 0.4);
 }
 
 .writeText {
-    font-size: 18px;
-    height: 70vh; 
-    background: #f4f8fb;
-    border-radius: 6px;
-    padding: 10px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    white-space: pre-wrap;
+  font-size: 18px;
+  height: 70vh; 
+  background: #f4f8fb;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap;
 }
 
 .writeSubmit {
-    position: static; 
-    color: white;
-    background-color: #006d6d;
-    padding: 15px 100px; 
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-left: 600px; 
+  position: static; 
+  color: white;
+  background-color: #006d6d;
+  padding: 15px 100px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-left: 600px; 
 }
 
 .writeSubmit:hover {
-    background-color: #fcfcfc;
-    color: black;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: #fcfcfc;
+  color: black;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .writeFormGroup select.writeInput {
-    margin-right: 10px; 
-  }
-  
-  .writeFormGroup select.writeInput:last-child {
-    margin-right: 0; 
-  }
+  margin-right: 10px; 
+}
 
-  .error-message {
-    color: darkred;
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 10px;
-    text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.5); 
-  }
-  
+.writeFormGroup select.writeInput:last-child {
+  margin-right: 0; 
+}
+
+.error-message {
+  color: darkred;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.5); 
+}
+
 
 
 /* Loading Overlay */
 .loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  }
-  
-  .loading-message {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 20px 40px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  /* Error message */
-  .error-message, 
-  .imerror-message {
-    color: red;
-    font-size: 16px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
 
-  .format-error-message {
-    color: darkred;
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 10px;
-    text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.5); 
-  }
+.loading-message {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Error message */
+.error-message, 
+.imerror-message {
+  color: red;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.format-error-message {
+  color: darkred;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.5); 
+}
+
+.videoUploadContainer {
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border: 2px solid #007bff;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.videoUploadContainer:hover {
+  background: linear-gradient(135deg, #bbdefb, #90caf9);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.videoUploadContainer i {
+  font-size: 28px;
+  display: block;
+  
+  color: #0d47a1;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.videoUploadContainer:hover i {
+  color: #002171;
+}
+
+#videoInput {
+  display: none;
+}
+
+.video-error-message {
+  color: darkred;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.5);
+}
+
+.videoContainer {
+margin-top: 20px;
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center; /* Centers the video */
+}
+
+.videoPlayer {
+max-width: 100%;
+width: 500px; /* Adjust width as needed */
+border-radius: 10px;
+}
+
+/* Buttons Wrapper */
+.videoButtons {
+margin-top: 10px; /* Space between video and buttons */
+display: flex;
+justify-content: center;
+gap: 10px; /* Space between buttons */
+}
+
+.videoButton,
+.removeVideoButton {
+padding: 8px 12px;
+font-size: 14px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.videoButton {
+background-color: #007bff;
+color: white;
+}
+
+.videoButton:hover {
+background-color: #0056b3;
+}
+
+.removeVideoButton {
+background-color: #ff4d4d;
+color: white;
+}
+
+.removeVideoButton:hover {
+background-color: #b30000;
+}
 
 
 /* Responsive codes */
 @media (max-width: 768px) {
-    .writeImg {
-      margin: 10px auto;
-      width: 90vw;
-      height: 300px;
-    }
-  
-    .writeFormGroup {
-      margin: 10px auto;
-      width: 90vw;
-      flex-direction: column;
-      padding: 10px;
-    }
-  
-    .writeIcon {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  
-    .writeInput {
-      font-size: 16px;
-      padding: 8px;
-      margin: 5px 0;
-    }
-  
-    .writeText {
-      font-size: 16px;
-      height: 40vh;
-      padding: 8px;
-    }
-  
-    .writeSubmit {
-      padding: 10px 50px;
-      margin: 10px auto;
-      width: 50%;
-      display: block;
-    }
-  
-    .writeFormGroup select.writeInput {
-      margin-right: 0; /* Remove right margin for stacked selects */
-      margin-bottom: 10px; /* Add bottom margin for spacing */
-    }
-  
-    .writeFormGroup select.writeInput:last-child {
-      margin-bottom: 0; /* Remove bottom margin for the last select */
-    }
-  
-    .error-message,
-    .imerror-message {
-      font-size: 14px;
-    }
-  
-    .loading-message {
-      font-size: 1.2rem;
-      padding: 15px 30px;
-    }
+  .writeImg {
+    margin: 10px auto;
+    width: 90vw;
+    height: 300px;
   }
-  
-  @media (max-width: 480px) {
-    .writeImg {
-      height: 200px;
-    }
-  
-    .writeFormGroup {
-      width: 95vw;
-      padding: 8px;
-    }
-  
-    .writeIcon {
-      width: 25px;
-      height: 25px;
-      font-size: 18px;
-    }
-  
-    .writeInput {
-      font-size: 14px;
-      padding: 6px;
-    }
-  
-    .writeText {
-      font-size: 14px;
-      height: 30vh;
-      padding: 6px;
-    }
-  
-    .writeSubmit {
-      font-size: 14px;
-      padding: 8px 30px;
-      width: 70%;
-    }
-  
-    .error-message,
-    .imerror-message {
-      font-size: 12px;
-    }
-  
-    .loading-message {
-      font-size: 1rem;
-      padding: 10px 20px;
-    }
+
+  .writeFormGroup {
+    margin: 10px auto;
+    width: 90vw;
+    flex-direction: column;
+    padding: 10px;
   }
+
+  .writeIcon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .writeInput {
+    font-size: 16px;
+    padding: 8px;
+    margin: 5px 0;
+  }
+
+  .writeText {
+    font-size: 16px;
+    height: 40vh;
+    padding: 8px;
+  }
+
+  .writeSubmit {
+    padding: 10px 50px;
+    margin: 10px auto;
+    width: 50%;
+    display: block;
+  }
+
+  .writeFormGroup select.writeInput {
+    margin-right: 0; /* Remove right margin for stacked selects */
+    margin-bottom: 10px; /* Add bottom margin for spacing */
+  }
+
+  .writeFormGroup select.writeInput:last-child {
+    margin-bottom: 0; /* Remove bottom margin for the last select */
+  }
+
+  .error-message,
+  .imerror-message {
+    font-size: 14px;
+  }
+
+  .loading-message {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+  }
+
+  .format-error-message {
+    font-size: 20px;
+    margin-top: 8px;
+  }
+
+  .videoUploadContainer {
+    width: 55px;
+    height: 55px;
+  }
+
+  .videoUploadContainer i {
+    font-size: 24px;
+  }
+
+  .videoPlayer {
+    width: 90%;
+  }
+
+  .videoButtons {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .videoButton,
+  .removeVideoButton {
+    width: 80%;
+    font-size: 13px;
+    padding: 7px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .writeImg {
+    height: 200px;
+  }
+
+  .writeFormGroup {
+    width: 95vw;
+    padding: 8px;
+  }
+
+  .writeIcon {
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+  }
+
+  .writeInput {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .writeText {
+    font-size: 14px;
+    height: 30vh;
+    padding: 6px;
+  }
+
+  .writeSubmit {
+    font-size: 14px;
+    padding: 8px 30px;
+    width: 70%;
+  }
+
+  .error-message,
+  .imerror-message {
+    font-size: 12px;
+  }
+
+  .loading-message {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .format-error-message {
+    font-size: 18px;
+    margin-top: 6px;
+  }
+
+  .videoUploadContainer {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .videoUploadContainer i {
+    font-size: 22px;
+  }
+
+  .videoPlayer {
+    width: 95%;
+  }
+
+  .videoButtons {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .videoButton,
+  .removeVideoButton {
+    width: 90%;
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}

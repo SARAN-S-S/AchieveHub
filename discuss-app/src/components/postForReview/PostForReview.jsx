@@ -28,19 +28,23 @@ export default function PostForReview() {
 
   const [updateloading, setupdateloading] = useState(false);
 
-
   const [titleError, setTitleError] = useState("");
   const [descError, setDescError] = useState("");
   const [categoryError, setCategoryError] = useState("");
   const [yearError, setYearError] = useState("");
 
+  // New state for video
+  const [video, setVideo] = useState(null);
+  const [newVideo, setNewVideo] = useState(null);
+  const [initialVideo, setInitialVideo] = useState(null);
+  const [videoError, setVideoError] = useState("");
+  const [showVideo, setShowVideo] = useState(false);
+
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
-  
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-
         const res = await axios.get(`${apiBaseUrl}/api/posts/${postId}`);
         setPost(res.data);
         setTitle(res.data.title);
@@ -49,6 +53,7 @@ export default function PostForReview() {
         setYear(res.data.tags[1] || "");
         setCategory2(res.data.tags[2] || "");
         setInitialPhoto(res.data.photo || null);
+        setInitialVideo(res.data.video || null); // Set initial video
         setLikes(res.data.likes || 0);
         setLoading(false);
       } catch (err) {
@@ -94,15 +99,57 @@ export default function PostForReview() {
     }
   };
 
+  const handleVideoChange = (e) => {
+    const selectedVideo = e.target.files[0];
+    if (!selectedVideo) {
+      setVideoError("Please upload a video.");
+      setVideo(null);
+      setNewVideo(null);
+      return;
+    }
+
+    // Check video format
+    const allowedFormats = ["video/mp4", "video/mov", "video/avi"];
+    if (!allowedFormats.includes(selectedVideo.type)) {
+      setVideoError("Invalid file format. Only MP4, MOV, and AVI are allowed.");
+      setVideo(null);
+      setNewVideo(null);
+      return;
+    }
+
+    // Check file size
+    if (selectedVideo.size > 10 * 1024 * 1024) {
+      setVideoError("Video size should be under 10MB only allowed...");
+      setVideo(null);
+      setNewVideo(null);
+    } else {
+      setVideoError("");
+      setVideo(selectedVideo);
+      setNewVideo(URL.createObjectURL(selectedVideo));
+    }
+  };
+
+  const toggleVideo = (e) => {
+    e.preventDefault();
+    setShowVideo((prev) => !prev);
+  };
+
+  const handleRemoveVideo = (e) => {
+    e.preventDefault();
+    setVideo(null);
+    setNewVideo(null);
+    setInitialVideo(null);
+  };
+
   const handleApprove = async () => {
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
       await axios.put(`${apiBaseUrl}/api/posts/approve/${postId}`);
       navigate("/approval-pending");
     } catch (err) {
       console.error("Error approving post:", err);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
@@ -111,14 +158,14 @@ export default function PostForReview() {
       alert("Please provide a reason for rejection.");
       return;
     }
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
       await axios.put(`${apiBaseUrl}/api/posts/reject/${postId}`, { reason: rejectionReason });
       navigate("/approval-pending");
     } catch (err) {
       console.error("Error rejecting post:", err);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
@@ -126,6 +173,11 @@ export default function PostForReview() {
     event.preventDefault();
     if (file && file.size > 3 * 1024 * 1024) {
       setError("Image size should be under 3MB only allowed...");
+      return;
+    }
+
+    if (video && video.size > 10 * 1024 * 1024) {
+      setVideoError("Video size should be under 10MB only allowed...");
       return;
     }
 
@@ -146,12 +198,14 @@ export default function PostForReview() {
       return;
     }
 
-    setupdateloading(true); // Start loading
+    setupdateloading(true);
     const tags = [category, year, category2].filter(Boolean);
     const updatedPost = {
       title,
       desc,
       tags,
+      photo: newPhoto ? newPhoto : initialPhoto,
+      video: initialVideo, // Default to initialVideo
     };
 
     if (file) {
@@ -159,28 +213,44 @@ export default function PostForReview() {
       data.append("file", file);
       try {
         const uploadRes = await axios.post(`${apiBaseUrl}/api/upload`, data);
-        updatedPost.photo = uploadRes.data.url; // Update the photo URL
+        updatedPost.photo = uploadRes.data.url;
       } catch (err) {
         console.error("Error uploading file:", err);
-        setupdateloading(false); // Stop loading if file upload fails
+        setupdateloading(false);
+        return;
+      }
+    }
+
+    if (video) {
+      const data = new FormData();
+      data.append("file", video);
+      try {
+        const uploadRes = await axios.post(`${apiBaseUrl}/api/upload-video`, data);
+        updatedPost.video = uploadRes.data.url;
+      } catch (err) {
+        console.error("Error uploading video:", err);
+        setupdateloading(false);
         return;
       }
     }
 
     try {
       await axios.put(`${apiBaseUrl}/api/posts/edit/${postId}`, updatedPost);
-      setPost({ ...post, ...updatedPost }); // Update the post state with the new data
+      setPost({ ...post, ...updatedPost });
       setUpdateMode(false);
       setFile(null);
       setNewPhoto(null);
       setInitialPhoto(updatedPost.photo);
+      setVideo(null);
+      setNewVideo(null);
+      setInitialVideo(updatedPost.video);
       setUpdateSuccess(true);
       setTimeout(() => setUpdateSuccess(false), 10000);
     } catch (err) {
       console.error("Error updating post:", err);
     } finally {
       setTimeout(() => {
-        setupdateloading(false); // Stop loading after 3 seconds
+        setupdateloading(false);
       }, 3000);
     }
   };
@@ -206,7 +276,7 @@ export default function PostForReview() {
         const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
         localStorage.setItem("likedPosts", JSON.stringify(likedPosts.filter((id) => id !== postId)));
       } else {
-        await axios.post(`/api/posts/${postId}/like`);
+        await axios.post(`${apiBaseUrl}/api/posts/${postId}/like`);
         setLikes(likes + 1);
         setLiked(true);
         const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
@@ -265,23 +335,61 @@ export default function PostForReview() {
                     className="writeFile"
                     onChange={handleFileChange}
                   />
-                  
                 </div>
                 <input
                   type="text"
                   value={title}
                   className="singlePostTitleInput"
                   autoFocus
-                  onChange={(e) => {setTitle(e.target.value);
-                  setTitleError("");
-                  } }
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                    setTitleError("");
+                  }}
                 />
               </div>
               {titleError && <p className="error-message">{titleError}</p>}
             </div>
 
+            {videoError && <p className="review-error-message">{videoError}</p>}
+
+            {/* Video Upload Section */}
+            <div className="reviewVideoUploadContainer" onClick={() => document.getElementById('reviewVideoInput').click()}>
+              <label htmlFor="reviewVideoInput">
+                <i className="fa-solid fa-video"></i>
+              </label>
+              <input
+                type="file"
+                id="reviewVideoInput"
+                className="reviewVideoInput"
+                onChange={handleVideoChange}
+                accept="video/*"
+              />
+            </div>
+
+            {/* Video Preview and Controls */}
+            {(newVideo || initialVideo) && (
+              <div className="reviewVideoContainer">
+                {showVideo && (
+                  <video controls className="reviewVideoPlayer">
+                    <source src={newVideo || initialVideo} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+
+                {/* Buttons container */}
+                <div className="reviewVideoButtons">
+                  <button className="reviewVideoButton" onClick={(e) => toggleVideo(e)}>
+                    {showVideo ? "📹 Minimize the video" : "📹 Click here to view the video"}
+                  </button>
+                  <button className="reviewRemoveVideoButton" onClick={(e) => handleRemoveVideo(e)}>
+                    ❌ Remove Video
+                  </button>
+                </div>
+              </div>
+            )}
+
             <div className="writeFormGroup">
-            <select className="writeInput" value={category} onChange={(e) => { setCategory(e.target.value); setCategoryError(""); }} required>
+              <select className="writeInput" value={category} onChange={(e) => { setCategory(e.target.value); setCategoryError(""); }} required>
                 <option value="Project">Project</option>
                 <option value="Patent">Patent</option>
                 <option value="Paper">Paper</option>
@@ -291,7 +399,7 @@ export default function PostForReview() {
                 <option value="Placement">Placement</option>
               </select>
 
-              <select className="writeInput" value={year} onChange={(e) => { setYear(e.target.value);  setYearError(""); }} required>
+              <select className="writeInput" value={year} onChange={(e) => { setYear(e.target.value); setYearError(""); }} required>
                 <option value="First Year">First Year</option>
                 <option value="Second Year">Second Year</option>
                 <option value="Third Year">Third Year</option>
@@ -313,9 +421,7 @@ export default function PostForReview() {
             {categoryError && <p className="error-message">{categoryError}</p>}
             {yearError && <p className="error-message">{yearError}</p>}
 
-
             {descError && <p className="error-message">{descError}</p>}
-          
             <textarea
               className="singlePostDescInput"
               value={desc}
@@ -360,6 +466,27 @@ export default function PostForReview() {
                 {new Date(post.createdAt).toDateString()}
               </span>
             </div>
+
+            {/* Video Display Section */}
+            {post.video ? (
+              <div className="reviewVideoContainer">
+                {showVideo && (
+                  <video controls className="reviewVideoPlayer">
+                    <source src={post.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+
+                {/* Buttons container */}
+                <div className="reviewVideoButtons">
+                  <button className="reviewVideoButton" onClick={toggleVideo}>
+                    {showVideo ? "📹 Minimize the video" : "📹 Click here to view the video"}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p className="no-video-message">No video available for this post.</p>
+            )}
 
             <p className="singlePostDesc">{desc}</p>
           </div>

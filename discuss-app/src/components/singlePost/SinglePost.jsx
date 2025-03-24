@@ -46,6 +46,11 @@ export default function SinglePost() {
   const [yearError, setYearError] = useState("");
   const [commentError, setcommentError] = useState("");
 
+  const [video, setVideo] = useState(null); // New state for video
+  const [newVideo, setNewVideo] = useState(null); // New state for updated video
+  const [initialVideo, setInitialVideo] = useState(null); // New state for initial video
+  const [videoError, setVideoError] = useState(""); // New state for video error
+  const [showVideo, setShowVideo] = useState(false); // Toggle video visibility
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
 
@@ -78,6 +83,7 @@ export default function SinglePost() {
         setCategory2(postData.tags[2] || "");
         setYear(postData.tags[1] || "");
         setInitialPhoto(postData.photo || null);
+        setInitialVideo(postData.video || null); // Set initial video
         setLikes(postData.likes || 0);
         setComments(commentsRes.data);
         setLoading(false);
@@ -92,8 +98,7 @@ export default function SinglePost() {
       }
     };
     getPostData();
-  }, [path, user , apiBaseUrl]);
-
+  }, [path, user, apiBaseUrl]);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -123,6 +128,48 @@ export default function SinglePost() {
       setFile(selectedFile);
       setNewPhoto(URL.createObjectURL(selectedFile));
     }
+  };
+
+  const handleVideoChange = (e) => {
+    const selectedVideo = e.target.files[0];
+    if (!selectedVideo) {
+      setVideoError("Please upload a video.");
+      setVideo(null);
+      setNewVideo(null); // Use newVideo here
+      return;
+    }
+  
+    // Check video format
+    const allowedFormats = ["video/mp4", "video/mov", "video/avi"];
+    if (!allowedFormats.includes(selectedVideo.type)) {
+      setVideoError("Invalid file format. Only MP4, MOV, and AVI are allowed.");
+      setVideo(null);
+      setNewVideo(null); // Use newVideo here
+      return;
+    }
+  
+    // Check file size
+    if (selectedVideo.size > 10 * 1024 * 1024) {
+      setVideoError("Video size should be under 10MB only allowed...");
+      setVideo(null);
+      setNewVideo(null); // Use newVideo here
+    } else {
+      setVideoError("");
+      setVideo(selectedVideo);
+      setNewVideo(URL.createObjectURL(selectedVideo)); // Use newVideo here
+    }
+  };
+
+  const toggleVideo = (e) => {
+    e.preventDefault(); // Prevent form submission
+    setShowVideo((prev) => !prev);
+  };
+  
+  const handleRemoveVideo = (e) => {
+    e.preventDefault(); // Prevent form submission
+    setVideo(null);
+    setNewVideo(null);
+    setInitialVideo(null); // Ensure initialVideo is also set to null
   };
   
 
@@ -162,32 +209,39 @@ export default function SinglePost() {
     }
   };
 
+  
+
   const handleUpdate = async (e) => {
     e.preventDefault();
-
+  
+    // Validation checks
     if (file && file.size > 3 * 1024 * 1024) {
       setError("Image size should be under 3MB only allowed...");
       return;
     }
-
-        
-      if (!title.trim()) {
-        setTitleError("Title is required.");
-        return;
-      }
-      if (!category.trim()) {
-        setCategoryError("Category 1 is required.");
-        return;
-      }
-      if (!year.trim()) {
-        setYearError("Student year is required.");
-        return;
-      }
-      if (!desc.trim()) {
-        setDescError("Description is required.");
-        return;
-      }
-
+  
+    if (video && video.size > 10 * 1024 * 1024) {
+      setVideoError("Video size should be under 10MB only allowed...");
+      return;
+    }
+  
+    if (!title.trim()) {
+      setTitleError("Title is required.");
+      return;
+    }
+    if (!category.trim()) {
+      setCategoryError("Category 1 is required.");
+      return;
+    }
+    if (!year.trim()) {
+      setYearError("Student year is required.");
+      return;
+    }
+    if (!desc.trim()) {
+      setDescError("Description is required.");
+      return;
+    }
+  
     setupdateLoading(true); // Start loading
     try {
       const updatedPost = {
@@ -198,8 +252,11 @@ export default function SinglePost() {
         category2,
         year,
         tags: [category, year, category2].filter(Boolean),
+        photo: newPhoto ? newPhoto : initialPhoto,
+        video: initialVideo, // Default to initialVideo
       };
-
+  
+      // Upload photo if a new file is selected
       if (file) {
         const data = new FormData();
         data.append("file", file);
@@ -208,17 +265,32 @@ export default function SinglePost() {
           updatedPost.photo = uploadRes.data.url;
         } catch (err) {
           console.error("Error uploading file:", err);
-        } finally {
-          setupdateLoading(false); // Stop loading
+        }
+      }
+  
+      // Upload video if a new file is selected
+      if (video) {
+        const data = new FormData();
+        data.append("file", video);
+        try {
+          const uploadRes = await axios.post(`${apiBaseUrl}/api/upload-video`, data);
+          updatedPost.video = uploadRes.data.url; // Set video to Cloudinary URL
+        } catch (err) {
+          console.error("Error uploading video:", err);
         }
       }
 
+  
+      // Send the updated post to the backend
       const res = await axios.put(`${apiBaseUrl}/api/posts/${post._id}`, updatedPost);
       setPost(res.data);
       setUpdateMode(false);
       setFile(null);
       setNewPhoto(null);
       setInitialPhoto(res.data.photo);
+      setVideo(null);
+      setNewVideo(null); // Reset newVideo
+      setInitialVideo(res.data.video); // Update initialVideo with the new URL
     } catch (err) {
       console.error("Error updating post:", err);
     } finally {
@@ -503,6 +575,7 @@ export default function SinglePost() {
       <div className="singlePostWrapper">
         {updateMode ? (
           <form onSubmit={handleUpdate}>
+            {/* Existing image and title section */}
             <div className="image-edit-section">
               {newPhoto ? (
                 <img className="writeImg" src={newPhoto} alt="New Post Preview" />
@@ -537,6 +610,46 @@ export default function SinglePost() {
               {titleError && <p className="error-message">{titleError}</p>}
             </div>
 
+            {videoError && <p className="error-message">{videoError}</p>}
+
+            {/* Video Upload Section */}
+            <div className="singleVideoUploadContainer" onClick={() => document.getElementById('singleVideoInput').click()}>
+              <label htmlFor="singleVideoInput">
+                <i className="fa-solid fa-video"></i> 
+              </label>
+              <input
+                type="file"
+                id="singleVideoInput"
+                className="singleVideoInput"
+                onChange={handleVideoChange}
+                accept="video/*"
+                
+              />
+            </div>
+
+            {/* Video Preview and Controls */}
+            {(newVideo || initialVideo) && (
+              <div className="singleVideoContainer">
+                {showVideo && (
+                  <video controls className="singleVideoPlayer">
+                    <source src={newVideo || initialVideo} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+                
+                {/* Buttons container */}
+                <div className="singleVideoButtons">
+                  <button className="singleVideoButton" onClick={(e) => toggleVideo(e)}>
+                    {showVideo ? "📹 Minimize the video" : "📹 Click here to view the video"}
+                  </button>
+                  <button className="singleRemoveVideoButton" onClick={(e) => handleRemoveVideo(e)}>
+                    ❌ Remove Video
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Existing category, year, and description fields */}
             <div className="writeFormGroup">
               <select className="writeInput" value={category} onChange={(e) => { setCategory(e.target.value); setCategoryError(""); }} required>
                 <option value="Project">Project</option>
@@ -568,7 +681,6 @@ export default function SinglePost() {
             </div>
             {categoryError && <p className="error-message">{categoryError}</p>}
             {yearError && <p className="error-message">{yearError}</p>}
-
 
             {descError && <p className="error-message">{descError}</p>}
             <textarea className="singlePostDescInput" value={desc} onChange={(e) => { setDesc(e.target.value); setDescError(""); }} />
@@ -611,6 +723,27 @@ export default function SinglePost() {
                 {new Date(post.createdAt).toDateString()}
               </span>
             </div>
+
+            {/* Video Display Section */}
+            {post.video ? (
+              <div className="singleVideoContainer">
+                {showVideo && (
+                  <video controls className="singleVideoPlayer">
+                    <source src={post.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+                
+                {/* Buttons container */}
+                <div className="singleVideoButtons">
+                  <button className="singleVideoButton" onClick={toggleVideo}>
+                    {showVideo ? "📹 Minimize the video" : "📹 Click here to view the video"}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p className="no-video-message">No video available for this post.</p>
+            )}
             <div className="like-container">
               <div className="like-section" onClick={handleLike}>
                 <FontAwesomeIcon icon={faThumbsUp} className={`like-icon ${liked ? "liked" : ""}`} />
@@ -619,8 +752,12 @@ export default function SinglePost() {
             </div>
             <br></br>
             <p className="singlePostDesc">{desc}</p>
+
+            
           </div>
         )}
+
+        {/* Comments Section (unchanged) */}
         <div className="comments-container">
           <div className="comments">
             <h3>Comments</h3>
