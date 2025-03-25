@@ -17,16 +17,7 @@ import ApprovalPending from "./pages/approvalPending/ApprovalPending";
 import PostForReview from "./components/postForReview/PostForReview";
 import MyPosts from "./pages/myPosts/MyPosts";
 
-
-
-
-
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "./context/Context";
 
@@ -48,10 +39,7 @@ function App() {
           }
         />
 
-        <Route
-          path="/dashboard"
-          element={user?.role === "admin" ? <Dashboard /> : <Navigate to="/login" />}
-        /> 
+        <Route path="/dashboard" element={user?.role === "admin" ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/users" element={user?.role === "admin" ? <Users /> : <Navigate to="/signup" />} />
         <Route path="/allposts" element={user?.role === "admin" ? <AllPosts /> : <Navigate to="/signup" />} />
         <Route path="/manageposts" element={user?.role === "admin" ? <ManagePosts /> : <Navigate to="/signup" />} />
@@ -60,7 +48,6 @@ function App() {
         <Route path="/approval-pending" element={user?.role === "admin" ? <ApprovalPending /> : <Navigate to="/signup" />} />
         <Route path="/review-post/:postId" element={user?.role === "admin" ? <PostForReview  /> : <Navigate to="/signup" />} />
 
-
         <Route path="/signup" element={user ? <Navigate to="/dashboard" /> : <Signup />} />
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route path="/write" element={user ? <Write /> : <Navigate to="/login" />} />
@@ -68,10 +55,7 @@ function App() {
         <Route path="/post/:postId" element={user ? <Single /> : <Navigate to="/login" />} />
         <Route path="/about" element={user ? <About /> : <Navigate to="/login" />} />
         <Route path="/contact" element={user ? <Contact /> : <Navigate to="/login" />} />
-        <Route
-          path="/my-posts"
-          element={user ? <MyPosts /> : <Navigate to="/login" />}
-        />
+        <Route path="/my-posts" element={user ? <MyPosts /> : <Navigate to="/login" />} />
       </Routes>
     </Router>
   );

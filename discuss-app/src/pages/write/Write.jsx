@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import "./write.css";
 import axios from "axios";
 import { Context } from "../../context/Context";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+
 
 export default function Write() {
   const [title, setTitle] = useState("");
@@ -17,6 +19,7 @@ export default function Write() {
   const [formatError, setFormatError] = useState(""); // Error message for invalid file format
   const [loading, setLoading] = useState(false); // Loading state
   const { user } = useContext(Context);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const [showVideo, setShowVideo] = useState(false);
 
@@ -127,7 +130,7 @@ export default function Write() {
 
     try {
       const res = await axios.post(`${apiBaseUrl}/api/posts`, newPost);
-      window.location.replace("/post/" + res.data._id);
+      navigate(`/post/${res.data._id}`);
     } catch (err) {
       console.error("Error creating post:", err);
     } finally {
