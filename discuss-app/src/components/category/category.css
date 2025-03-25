@@ -95,12 +95,6 @@
   .category-section ul li {
     padding: 6px 10px;
   }
-
-  .clear-btn {
-    width: 90px;
-    font-size: 0.8rem;
-    padding: 5px 10px;
-  }
 }
 
 /* Responsive Design for 480px */
@@ -117,11 +111,5 @@
   .category-section ul li {
     padding: 5px 8px;
     font-size: 0.8rem;
-  }
-
-  .clear-btn {
-    width: 80px;
-    font-size: 0.7rem;
-    padding: 4px 8px;
   }
 }
