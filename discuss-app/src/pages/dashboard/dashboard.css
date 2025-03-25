@@ -1,154 +1,182 @@
 
 .dashboard {
-    padding: 40px 20px;
-    font-family: "Poppins", sans-serif;
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 
 .background-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(-45deg, #f0f0f0, #e0e0e0, #d1d1d1, #f5f5f5);
-    background-size: 400% 400%;
-    animation: gradientBG 8s ease infinite;
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #f0f0f0, #e0e0e0, #d1d1d1, #f5f5f5);
+  background-size: 400% 400%;
+  animation: gradientBG 8s ease infinite;
+  z-index: -1;
 }
 
 
 @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .dashboard h1 {
-    text-align: center;
-    color: #2c3e50;
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    font-weight: 700;
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  font-weight: 700;
 }
 
 
 .dashboardGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    max-width: 1000px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .card {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    padding: 35px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    position: relative;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  position: relative;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 
 .icon {
-    font-size: 3rem;
-    color: #f8f9fa;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 3rem;
+  color: #f8f9fa;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
 .card h2 {
-    font-size: 1.4rem;
-    color: #f8f9fa;
-    font-weight: 500;
+  font-size: 1.4rem;
+  color: #f8f9fa;
+  font-weight: 500;
 }
+
+.count-badge {
+font-size: 1.5rem;
+font-weight: 700;
+color: #ffffff;
+background: linear-gradient(135deg, #00c6ff, #0072ff);
+padding: 12px 20px;
+border-radius: 25px;
+box-shadow: 0 4px 12px rgba(0, 114, 255, 0.4);
+margin-top: 12px;
+display: inline-block;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover .count-badge {
+transform: scale(1.1);
+box-shadow: 0 6px 16px rgba(0, 114, 255, 0.6);
+}
+
+
 
 /* Responsive Design for Tablets */
 @media (max-width: 768px) {
-    .dashboard {
-      padding: 30px 15px;
-    }
-  
-    .dashboard h1 {
-      font-size: 2rem;
-      margin-bottom: 40px;
-    }
-  
-    .dashboardGrid {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      max-width: 90%;
-    }
-  
-    .card {
-      padding: 25px;
-      height: 150px;
-    }
-  
-    .icon {
-      font-size: 2.5rem;
-      padding: 15px;
-      margin-bottom: 10px;
-    }
-  
-    .card h2 {
-      font-size: 1.2rem;
-    }
+  .dashboard {
+    padding: 30px 15px;
   }
-  
-  /* Responsive Design for Mobile Phones */
-  @media (max-width: 480px) {
-    .dashboard {
-      padding: 20px 10px;
-    }
-  
-    .dashboard h1 {
-      font-size: 1.8rem;
-      margin-bottom: 30px;
-    }
-  
-    .dashboardGrid {
-      grid-template-columns: 1fr;
-      gap: 15px;
-      max-width: 95%;
-    }
-  
-    .card {
-      padding: 20px;
-      height: 130px;
-    }
-  
-    .icon {
-      font-size: 2rem;
-      padding: 12px;
-      margin-bottom: 8px;
-    }
-  
-    .card h2 {
-      font-size: 1rem;
-    }
+
+  .dashboard h1 {
+    font-size: 2rem;
+    margin-bottom: 40px;
   }
-  
+
+  .dashboardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 90%;
+  }
+
+  .card {
+    padding: 25px;
+    height: 150px;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+
+  .card h2 {
+    font-size: 1.2rem;
+  }
+  .count-badge {
+    font-size: 1.3rem;
+    padding: 8px 14px;
+  }
+}
+
+/* Responsive Design for Mobile Phones */
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 20px 10px;
+  }
+
+  .dashboard h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 95%;
+  }
+
+  .card {
+    padding: 20px;
+    height: 130px;
+  }
+
+  .icon {
+    font-size: 2rem;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+  }
+  .count-badge {
+    font-size: 1.1rem;
+    padding: 6px 12px;
+  }
+}
