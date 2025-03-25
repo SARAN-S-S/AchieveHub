@@ -19,10 +19,11 @@ router.post("/", async (req, res) => {
 });
 
 
-
 // UPDATE POST (Allow admin to update any post)
 router.put("/:id", async (req, res) => {
+  
   try {
+      
       const post = await Post.findById(req.params.id);
       if (!post) {
           return res.status(404).json("Post not found");
@@ -41,11 +42,19 @@ router.put("/:id", async (req, res) => {
               photo: req.body.photo || post.photo,
           };
 
+          if (req.body.video !== undefined) {
+            updateObject.video = req.body.video; // This will handle both string and null cases.
+        }
+
           const updatedPost = await Post.findByIdAndUpdate(
               req.params.id,
               { $set: updateObject },
-              { new: true }
+              { new: true, writeConcern: { w: 'majority' } }
           );
+
+         
+          const verifiedPost = await Post.findById(req.params.id);
+          
 
           res.status(200).json(updatedPost);
       } else {
@@ -56,7 +65,6 @@ router.put("/:id", async (req, res) => {
       res.status(500).json({ message: "Failed to update post" });
   }
 });
-
 
 // DELETE POST (Allow admin to delete any post)
 router.delete("/:id", async (req, res) => {
@@ -330,7 +338,6 @@ router.post("/bulk-delete", async (req, res) => {
 
 // Approve a post
 router.put("/approve/:id", async (req, res) => {
-  console.log("Bulk approve route hit! tp eeh");
   try {
     const post = await Post.findByIdAndUpdate(
       req.params.id,
@@ -365,7 +372,6 @@ router.put("/reject/:id", async (req, res) => {
   }
 });
 
-
 // Edit a post (admin can edit before approval)
 router.put("/edit/:id", async (req, res) => {
   try {
@@ -386,6 +392,11 @@ router.put("/edit/:id", async (req, res) => {
       }
       return acc;
     }, {});
+
+    // Handle the video field separately
+    if (req.body.video !== undefined) {
+      updateObject.video = req.body.video; // This will handle both string and null cases.
+    }
 
     if (Object.keys(updateObject).length === 0) {
       return res.status(400).json("No valid fields to update.");
@@ -408,7 +419,6 @@ router.put("/edit/:id", async (req, res) => {
     res.status(500).json("Server error. Please try again later.");
   }
 });
-
 
 
 // Track post view
