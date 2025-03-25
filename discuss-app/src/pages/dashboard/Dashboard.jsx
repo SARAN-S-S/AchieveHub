@@ -56,7 +56,7 @@ export default function Dashboard() {
 
   const menuItems = [
     { 
-      title: "Total Students", 
+      title: "Total Users", 
       icon: <Users size={40} />, 
       route: "/users",
       count: totalUsers 

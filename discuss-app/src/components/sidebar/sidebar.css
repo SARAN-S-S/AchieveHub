@@ -1,167 +1,28 @@
-
-.sidebarWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-.sidebar {
-  width: 340px; 
-  margin: 20px;
-  padding: 15px;
-  background-color: #b4e3ea; 
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 3px solid #004080; 
-  height: 480px;
-  box-sizing: border-box;
-}
-
-
-.sidebarItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #e6fbff; 
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 2px solid #ff6666; 
-}
-
-
-.sidebarTitle {
-  margin: 0px;
-  padding: 1px;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  font-family: 'Varela Round', sans-serif;
-  font-size: 16px;
-  color: #333;
-  font-weight: 700;
-  line-height: 22px;
-}
-
-.sidebarTitle b, .sidebarTitle i {
-  display: block;
-}
-
-.sidebarTitle::before,
-.sidebarTitle::after {
-  content: "";
-  display: block;
-  border-top: 2px solid #000;
-  border-bottom: 2px solid #000;
-  margin: 3px 0;
-}
-
-.sidebarImg {
-  width: 80%;
-  height: auto;
-  border-radius: 10px;
-  margin: 10px 0;
-  border: 3px solid #005566;
-}
-
-
-.sidebarItem p {
-  margin: 0;
-  padding: 10px;
-  color: #555;
-  font-size: 14px;
-  line-height: 1.6;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-
 .categoryContainer {
-  width: 310px; 
-  margin-top: 10px;
-  padding: 15px;
-  background: linear-gradient(135deg, #e6f7ff 0%, #b3e0ff 100%);
-  border-radius: 10px;
-  border: 2px solid #0099cc; 
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out; 
-}
-
-
-.categoryContainer:hover {
-  transform: scale(1.03); 
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); 
-}
-
-
-.categoryItem {
-  background: #f2f2f2;
+  width: 200px;
+  margin: 10px;
   padding: 12px;
-  margin: 8px 0;
+  background: linear-gradient(135deg, #e6f7ff 0%, #b3e0ff 100%);
   border-radius: 8px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  border: 2px solid transparent;
-}
-
-.categoryItem:hover {
-  background: #007acc;
-  color: white;
-  border: 2px solid #005599;
-  transform: scale(1.05);
+  border: 2px solid #0099cc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
 }
 
 @media (max-width: 768px) {
-  .sidebarWrapper {
-    flex-direction: column; 
-    align-items: center; 
-  }
-
-  .sidebar {
-    width: 90%; 
-    margin: 10px 0; 
-    height: auto; 
-  }
-
-  .sidebarItem {
-    padding: 15px; 
-  }
-
-  .sidebarTitle {
-    font-size: 1.2rem; 
-  }
-
-  .sidebarImg {
-    width: 90%; 
-  }
-
-  .sidebarItem p {
-    font-size: 1rem; 
-    text-align: justify; 
-  }
-
   .categoryContainer {
-    width: 90%; 
-    margin: 10px 0; 
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
-  }
-
-  .categoryContainer:hover {
-    transform: scale(1.01);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    width: 200px;
+    padding: 10px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
   }
 
   .categoryItem {
-    font-size: 1rem; 
-    padding: 10px; 
+    font-size: 13px;
+    padding: 8px;
   }
 
   .categoryItem:hover {
@@ -169,46 +30,20 @@
   }
 }
 
-
-@media (max-width: 480px) { 
-  .sidebar {
-    width: 95%; 
-    margin: 8px 0;
-    padding: 10px;
-  }
-
-  .sidebarTitle {
-    font-size: 1rem; 
-  }
-
-  .sidebarTitle::before,
-  .sidebarTitle::after {
-    margin: 2px 0;
-  }
-
-  .sidebarImg {
-    width: 95%; 
-    margin: 8px 0;
-  }
-
-  .sidebarItem {
-    padding: 12px;
-  }
-
-  .sidebarItem p {
-    font-size: 0.9rem; 
-    padding: 8px;
-  }
-
+@media (max-width: 480px) {
   .categoryContainer {
-    width: 95%; 
-    margin: 8px 0;
-    padding: 10px;
+    width: 180px;
+    padding: 8px;
+    margin: 6px auto;
   }
 
   .categoryItem {
-    font-size: 0.9rem; 
-    padding: 8px;
-    margin: 6px 0;
+    font-size: 12px;
+    padding: 6px;
+    margin: 4px 0;
+  }
+
+  .categoryItem:hover {
+    transform: scale(1.01);
   }
 }

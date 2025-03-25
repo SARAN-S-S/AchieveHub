@@ -1,108 +1,127 @@
-.category {
-  display: flex;
-  justify-content: space-between;
-
+/* Category Container */
+.category-container {
+  background: #1a1a1a;
   padding: 15px;
-  background-color: #98c8c4; 
   border-radius: 10px;
-  border: 2px solid #799491; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  text-align: left;
+  margin: 6px;
 }
 
-
-.categorySection {
-  width: 45%; 
+/* Section Styling */
+.category-section {
+  margin-bottom: 15px;
 }
 
-.categorySection h3 {
-  font-size: 18px;
-  color: white;
-  margin-bottom: 10px;
-  font-family: 'Varela Round', sans-serif;
-  padding: 10px;
-  border-radius: 8px; 
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #2857ce 0%, #5f92eb 100%);
+.category-section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #4e73df;
 }
 
-.categorySection ul {
-  list-style-type: none; 
+/* List Styling */
+.category-section ul {
+  list-style: none;
   padding: 0;
 }
 
-.categorySection ul li {
-  margin: 8px 0;
-  padding: 10px;
-  background: linear-gradient(135deg, #6a94f3 0%, #78aef7 100%); /* Lighter blue gradient for category items */
-  border-radius: 8px; 
+.category-section ul li {
+  background: #262626;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-radius: 6px;
   transition: all 0.3s ease;
-  font-size: 14px;
-  color: white;
-  font-weight: bold;
+  cursor: pointer;
 }
 
-.categorySection ul li:hover {
-  background: linear-gradient(135deg, #5a81d3 0%, #66a7df 100%); /* Lighter blue gradient on hover */
-  transform: scale(1.05); 
-}
-
-.categorySection ul li a {
+.category-section ul li a {
+  color: #ffffff;
   text-decoration: none;
-  color: inherit; 
+  font-weight: 500;
+  display: block;
 }
 
-.categorySection ul li a:hover {
-  color: white; 
+/* Hover Effect */
+.category-section ul li:hover {
+  background: #4e73df;
+  transform: scale(1.05);
 }
 
-/* Active link (when clicked) */
-.categorySection ul li.active {
-  background: linear-gradient(135deg, #4a71c6 0%, #66a7df 100%); /* Darker blue gradient for active items */
-  color: white;
+/* Active State */
+.category-section ul li.active {
+  background: #ff758c;
+  font-weight: 600;
+  box-shadow: 0 0 8px rgba(255, 117, 140, 0.5);
 }
 
-.categorySection ul li.active a:hover {
-  color: white; 
+/* Clear Filter Button */
+.clear-btn {
+  background: #ff5c5c;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin-top: 10px;
+  width: 150px;
+  transition: all 0.3s ease;
 }
 
-/* Background gradient for student years section */
-.categorySection.studentYears h3 {
-  background: linear-gradient(135deg, #00c8b7 0%, #00e0b9 100%); /* Lighter turquoise gradient for Student Years */
+/* Hover Effect for Clear Button */
+.clear-btn:hover {
+  background: #cab2b2;
+  box-shadow: 0 0 6px rgba(255, 92, 92, 0.5);
+  color: red;
 }
 
-
-/* Responsive styles for tablets */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .category {
-    flex-direction: column; 
+  .category-container {
+    width: 180px;
+    padding: 10px;
   }
 
-  .categorySection {
-    width: 90%; 
-    margin-bottom: 15px; 
+  .category-section h3 {
+    font-size: 1rem;
+  }
+
+  .category-section ul li {
+    padding: 6px 10px;
+  }
+
+  .clear-btn {
+    width: 90px;
+    font-size: 0.8rem;
+    padding: 5px 10px;
   }
 }
 
-/* Responsive styles for mobile phones */
+/* Responsive Design for 480px */
 @media (max-width: 480px) {
-  .category {
-    padding: 10px; 
-  }
-
-  .categorySection {
-    width: 100%; 
-    margin-bottom: 10px;
-  }
-
-  .categorySection h3 {
-    font-size: 16px; 
+  .category-container {
+    width: 140px;
     padding: 8px;
-    margin-bottom: 8px;
   }
 
-  .categorySection ul li {
-    font-size: 12px; 
-    padding: 8px;
-    margin: 5px 0;
+  .category-section h3 {
+    font-size: 0.9rem;
+  }
+
+  .category-section ul li {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+
+  .clear-btn {
+    width: 80px;
+    font-size: 0.7rem;
+    padding: 4px 8px;
   }
 }

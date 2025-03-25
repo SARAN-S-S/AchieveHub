@@ -1,18 +1,20 @@
 .postForReview {
   padding: 20px;
-  background-color: #d7dde3;
+  background-color: #e3f0ff; 
   min-height: 100vh;
 }
 
 .postForReviewWrapper {
-  width: 90%; 
-  max-width: 800px; 
-  margin: 20px auto; 
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
   padding: 50px 20px;
-  background: rgb(255, 216, 204); /* Light Coral */
-
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom right, #f8fcff, #e6f2ff);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 119, 182, 0.1);
+  border: 2px solid rgba(0, 119, 182, 0.15);
+  border-top: 6px solid #4e73df;
+  border-bottom: 6px solid #4e73df;
 }
 
 .singlePostImg {
