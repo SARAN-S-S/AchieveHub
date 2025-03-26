@@ -498,12 +498,21 @@
   }
   
   .searchContainerApproval {
-    flex-direction: row;
-    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 10px; 
   }
   
   .searchWrapperApproval {
-    width: 50%;
+    width: 60%; 
+  }
+  
+  .bulkApproveButtonApproval {
+    width: 50%; 
+    text-align: center;
+    margin-top: 5px; 
+    margin-left: auto;
+    display: block; 
   }
   
   .searchContainerApproval input {
@@ -516,10 +525,6 @@
     font-size: 0.9rem;
   }
   
-  .bulkApproveButtonApproval {
-    padding: 8px 12px;
-    font-size: 0.85rem;
-  }
   
   .approvalPendingTable th,
   .approvalPendingTable td {

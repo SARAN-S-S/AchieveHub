@@ -414,12 +414,13 @@
   }
   
   .searchContainerCustom {
-    flex-direction: row;
-    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 10px; 
   }
   
   .searchWrapperCustom {
-    width: 55%;
+    width: 60%; 
   }
   
   .searchContainerCustom input {
@@ -433,8 +434,11 @@
   }
   
   .bulkDeleteButtonCustom {
-    padding: 8px 12px;
-    font-size: 0.85rem;
+    width: 50%; 
+    text-align: center;
+    margin-top: 5px; 
+    margin-left: auto;
+    display: block; 
   }
   
   .customPostsTable th,

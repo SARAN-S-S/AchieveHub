@@ -497,4 +497,19 @@
     order: 0;
     width: auto;
   }
+
+  .usersBarChartContainer {
+    width: 90%;
+    padding: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .usersBarChartContainer canvas {
+    height: 220px !important;
+    width: 100% !important;
+    max-width: 300px !important;
+  }
 }
