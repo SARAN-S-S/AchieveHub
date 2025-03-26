@@ -16,6 +16,9 @@ export default function Home() {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
 
   useEffect(() => {
+    // Scroll to top whenever search/filters change
+    window.scrollTo(0, 0);
+    
     const fetchPosts = async () => {
       setLoading(true);
       try {
@@ -27,7 +30,8 @@ export default function Home() {
       setLoading(false);
     };
     fetchPosts();
-  }, [search, apiBaseUrl]);
+  }, [search]);
+
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;

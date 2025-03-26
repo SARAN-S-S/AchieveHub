@@ -1,4 +1,3 @@
-
 .contactContainer {
   display: flex;
   flex-direction: column;
@@ -7,11 +6,12 @@
   gap: 20px;
   padding: 20px;
   background-color: #d7edd7;
-  height: 100vh; 
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .contactCard {
-  background: linear-gradient(135deg, #fff3e0 0%, #ffccbc 100%); 
+  background: linear-gradient(135deg, #fff3e0 0%, #ffccbc 100%);
   border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
@@ -30,21 +30,21 @@
 .contactName {
   font-size: 1.5em;
   font-weight: bold;
-  color: #4e342e; 
+  color: #4e342e;
   margin-bottom: 10px;
 }
 
 .contactDepartment {
   font-size: 1.2em;
-  color: #6d4c41; 
+  color: #6d4c41;
   margin-bottom: 10px;
 }
 
 .contactEmail {
   display: block;
   font-size: 1em;
-  color: #bf360c; 
-  background-color: #ffe0b2; 
+  color: #bf360c;
+  background-color: #ffe0b2;
   padding: 5px 10px;
   border-radius: 5px;
   text-decoration: none;
@@ -53,14 +53,14 @@
 }
 
 .contactEmail:hover {
-  background-color: #524946; 
+  background-color: #524946;
   color: white;
 }
 
 .contactLink {
   font-size: 1em;
   color: #ffffff;
-  background-color: #d84315; 
+  background-color: #d84315;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
@@ -68,34 +68,71 @@
 }
 
 .contactLink:hover {
-  background-color: #f1f1f1; 
+  background-color: #f1f1f1;
   color: black;
 }
 
-
-
-/* Responsive codes*/
-@media (max-width: 768px) {
+/* Responsive Design for Large Screens (1080px and above) */
+@media (min-width: 1081px) {
   .contactContainer {
-    gap: 15px;
-    padding: 15px;
-    height: auto; 
+    gap: 30px;
+    padding: 40px;
   }
 
   .contactCard {
-    width: 90%; 
-    padding: 15px;
-    margin: 15px 0;
+    width: 70%;
+    max-width: 450px;
+    padding: 25px;
   }
 
   .contactName {
+    font-size: 1.6em;
+  }
+
+  .contactDepartment {
     font-size: 1.3em;
-    margin-bottom: 8px;
+  }
+}
+
+/* Responsive Design for Tablets (768px - 1080px) */
+@media (max-width: 1080px) and (min-width: 769px) {
+  .contactContainer {
+    gap: 25px;
+    padding: 30px;
+  }
+
+  .contactCard {
+    width: 75%;
+    padding: 20px;
+  }
+
+  .contactName {
+    font-size: 1.4em;
   }
 
   .contactDepartment {
     font-size: 1.1em;
-    margin-bottom: 8px;
+  }
+}
+
+/* Responsive Design for Mobile Phones (up to 768px) */
+@media (max-width: 768px) {
+  .contactContainer {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .contactCard {
+    width: 85%;
+    padding: 15px;
+  }
+
+  .contactName {
+    font-size: 1.3em;
+  }
+
+  .contactDepartment {
+    font-size: 1em;
   }
 
   .contactEmail {
@@ -109,35 +146,36 @@
   }
 }
 
+/* Responsive Design for Small Mobile Phones (up to 480px) */
 @media (max-width: 480px) {
   .contactContainer {
-    gap: 10px;
-    padding: 10px;
+    gap: 15px;
+    padding: 15px;
   }
 
   .contactCard {
-    width: 95%; 
-    padding: 10px;
-    margin: 10px 0;
+    width: 90%;
+    padding: 12px;
+    margin: 15px 0;
   }
 
   .contactName {
     font-size: 1.2em;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   .contactDepartment {
-    font-size: 1em;
-    margin-bottom: 5px;
+    font-size: 0.95em;
+    margin-bottom: 8px;
   }
 
   .contactEmail {
-    font-size: 0.8em;
-    margin-bottom: 10px;
+    font-size: 0.85em;
+    margin-bottom: 12px;
   }
 
   .contactLink {
-    font-size: 0.8em;
-    padding: 6px 12px;
+    font-size: 0.85em;
+    padding: 7px 14px;
   }
 }

@@ -315,40 +315,195 @@
   max-width: 300px;
 }
 
+/* Responsive Design for Large Screens (1080px and above) */
+/* Existing styles remain the same until the responsive section */
 
-/* Responsive Design for Tablets */
-@media (max-width: 768px) {
+/* Responsive Design for Large Screens (1080px and above) */
+@media (min-width: 1081px) {
+  .mypostTableContainer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .mypostTable {
+    min-width: 1000px;
+  }
+
+  .mypostPagination {
+    gap: 15px;
+  }
+
+  .mypostPagination span {
+    margin: 0 20px;
+  }
+}
+
+/* Responsive Design for Tablets (768px - 1080px) */
+@media (max-width: 1080px) and (min-width: 769px) {
   .mypostContainer {
-    padding: 15px;
+    padding: 20px 15px;
   }
 
   .mypostTitle {
-    font-size: 24px;
-    margin-bottom: 50px;
+    font-size: 26px;
+    margin-bottom: 60px;
   }
 
   .mypostInnerContainer {
-    grid-template-rows: auto auto auto;
-    gap: 15px;
     padding: 15px;
-    border-width: 2px;
+  }
+
+  .mypostTotalPosts {
+    padding: 25px;
+    font-size: 22px;
+  }
+
+  .mypostSearchContainer {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .mypostSearchWrapper {
+    flex-grow: 1;
+  }
+
+  .mypostSearchInput {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+  }
+
+  .mypostSearchIcon {
+    left: 12px;
+    font-size: 16px;
+  }
+
+  .mypostBulkDeleteButton {
+    padding: 10px 20px;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .mypostTableContainer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+  }
+
+  .mypostTable {
+    min-width: 950px;
+  }
+
+  .mypostTable th,
+  .mypostTable td {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+
+  .mypostPagination {
+    gap: 10px;
+  }
+
+  .mypostPagination span {
+    margin: 0 15px;
+  }
+}
+
+/* Responsive Design for Mobile Phones (480px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .mypostContainer {
+    padding: 15px 10px;
+  }
+
+  .mypostTitle {
+    font-size: 22px;
+    margin-bottom: 40px;
+  }
+
+  .mypostInnerContainer {
+    padding: 12px;
   }
 
   .mypostTotalPosts {
     padding: 20px;
-    border-radius: 12px;
-    margin: 15px auto;
-  }
-
-  .mypostTotalPosts span {
     font-size: 20px;
   }
 
   .mypostSearchContainer {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
+  }
+
+  .mypostSearchWrapper {
+    flex-grow: 1;
+  }
+
+  .mypostSearchInput {
+    padding: 8px 8px 8px 30px;
+    font-size: 14px;
+  }
+
+  .mypostSearchIcon {
+    left: 10px;
+    font-size: 14px;
+  }
+
+  .mypostBulkDeleteButton {
+    padding: 8px 15px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .mypostTableContainer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 15px;
+  }
+
+  .mypostTable {
+    min-width: 900px;
+  }
+
+  .mypostTable th,
+  .mypostTable td {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .mypostPagination {
+    gap: 8px;
+  }
+
+  .mypostPagination span {
+    margin: 0 10px;
+    font-size: 14px;
+  }
+}
+
+/* Responsive Design for Small Mobile Phones (up to 480px) */
+@media (max-width: 480px) {
+  .mypostContainer {
+    padding: 12px 8px;
+  }
+
+  .mypostTitle {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .mypostInnerContainer {
+    padding: 10px;
+  }
+
+  .mypostTotalPosts {
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .mypostSearchContainer {
+    flex-direction: column;
+    gap: 10px;
   }
 
   .mypostSearchWrapper {
@@ -357,196 +512,54 @@
 
   .mypostSearchInput {
     padding: 8px 8px 8px 30px;
-    font-size: 14px;
-    width: 100%;
+    font-size: 13px;
   }
 
   .mypostSearchIcon {
     left: 8px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .mypostBulkDeleteButton {
-    padding: 8px 15px;
-    font-size: 14px;
+    padding: 8px 12px;
+    font-size: 13px;
     width: 100%;
   }
 
-  .mypostTable th,
-  .mypostTable td {
-    padding: 8px 15px;
-    font-size: 12px;
-    height: auto;
-  }
-
-  .mypostPagination button {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .mypostPagination span {
-    font-size: 16px;
-    margin: 0 10px;
-    padding: 10px 12px;
-  }
-
-  .mypostActionLink,
-  .mypostDeleteButton,
-  .writelink {
-    padding: 4px 8px;
-    font-size: 12px;
-  }
-
-  .mypostLoading {
-    font-size: 1rem;
-    height: 150px;
-  }
-
-  .mypostSpinner {
-    width: 30px;
-    height: 30px;
-    border-width: 3px;
-    margin-bottom: 8px;
-  }
-
-  .mypostNoPostsContent {
-    padding: 20px;
-  }
-
-  .mypostNoPostsEmoji {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-  }
-
-  .mypostNoPostsMessage {
-    font-size: 0.9em;
-    max-width: 90%;
-  }
-}
-
-/* Responsive Design for Mobile Phones */
-@media (max-width: 480px) {
-  .mypostContainer {
-    padding: 10px;
-  }
-
-  .mypostTitle {
-    font-size: 20px;
-    margin-bottom: 40px;
-  }
-
-  .mypostInnerContainer {
-    grid-template-rows: auto auto auto;
-    gap: 10px;
-    padding: 10px;
-    border-width: 1px;
-  }
-
-  .mypostTotalPosts {
-    padding: 15px;
-    border-radius: 10px;
-    margin: 10px auto;
-  }
-
-  .mypostTotalPosts span {
-    font-size: 16px;
-  }
-
-  .mypostSearchContainer {
-    gap: 8px;
-  }
-
-  .mypostSearchInput {
-    padding: 6px 6px 6px 25px;
-    font-size: 12px;
-  }
-
-  .mypostSearchIcon {
-    left: 6px;
-    font-size: 14px;
-  }
-
-  .mypostBulkDeleteButton {
-    padding: 6px 12px;
-    font-size: 12px;
+  .mypostTableContainer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 15px;
   }
 
   .mypostTable {
-    border-width: 1.5px;
+    min-width: 850px;
   }
 
   .mypostTable th,
   .mypostTable td {
     padding: 6px 10px;
-    font-size: 10px;
-    white-space: normal;
-    word-break: break-word;
-    height: auto;
-  }
-
-  .mypostTable th:nth-child(3), /* Hide Author */
-  .mypostTable td:nth-child(3),
-  .mypostTable th:nth-child(4), /* Hide Email */
-  .mypostTable td:nth-child(4),
-  .mypostTable th:nth-child(6), /* Hide Event Type 1 */
-  .mypostTable td:nth-child(6),
-  .mypostTable th:nth-child(7), /* Hide Event Type 2 */
-  .mypostTable td:nth-child(7),
-  .mypostTable th:nth-child(8), /* Hide Student Year */
-  .mypostTable td:nth-child(8),
-  .mypostTable th:nth-child(9), /* Hide Image */
-  .mypostTable td:nth-child(9) {
-    display: none;
+    font-size: 11px;
   }
 
   .mypostPagination {
-    flex-direction: column;
-    align-items: center;
     gap: 5px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    justify-content: center;
   }
 
   .mypostPagination button {
-    padding: 8px 15px;
+    flex-shrink: 0;
+    padding: 6px 12px;
     font-size: 12px;
   }
 
   .mypostPagination span {
-    font-size: 14px;
-    padding: 8px 10px;
-    background-color: #eee;
-    border-radius: 4px;
-  }
-
-  .mypostActionLink,
-  .mypostDeleteButton,
-  .writelink {
-    padding: 3px 6px;
-    font-size: 10px;
-  }
-
-  .mypostLoading {
-    font-size: 0.9rem;
-    height: 120px;
-  }
-
-  .mypostSpinner {
-    width: 24px;
-    height: 24px;
-    border-width: 3px;
-    margin-bottom: 6px;
-  }
-
-  .mypostNoPostsContent {
-    padding: 15px;
-  }
-
-  .mypostNoPostsEmoji {
-    font-size: 2em;
-    margin-bottom: 8px;
-  }
-
-  .mypostNoPostsMessage {
-    font-size: 0.8em;
-    max-width: 95%;
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 6px 10px;
+    margin: 0 5px;
   }
 }

@@ -10,11 +10,16 @@ const Category = () => {
   const eventTypes = ["Project", "Patent", "Paper", "Journal", "Competition", "Product", "Placement"];
   const studentYears = ["First Year", "Second Year", "Third Year", "Final Year"];
 
-  // Function to clear filters
+  const handleFilterClick = (filterValue) => {
+    navigate(`/?tag=${filterValue}`);
+    window.scrollTo(0, 0); // Scroll to top after navigation
+  };
+
   const clearFilters = () => {
     setActiveType(null);
     setActiveYear(null);
-    navigate("/"); // Redirect to home without filters
+    navigate("/");
+    window.scrollTo(0, 0); // Scroll to top after clearing filters
   };
 
   return (
@@ -26,7 +31,10 @@ const Category = () => {
             <li
               key={index}
               className={activeType === type ? "active" : ""}
-              onClick={() => setActiveType(type)}
+              onClick={() => {
+                setActiveType(type);
+                handleFilterClick(type);
+              }}
             >
               <Link to={`/?tag=${type}`}>{type}</Link>
             </li>
@@ -40,14 +48,16 @@ const Category = () => {
             <li
               key={index}
               className={activeYear === year ? "active" : ""}
-              onClick={() => setActiveYear(year)}
+              onClick={() => {
+                setActiveYear(year);
+                handleFilterClick(year);
+              }}
             >
               <Link to={`/?tag=${year}`}>{year}</Link>
             </li>
           ))}
         </ul>
       </div>
-      {/* Clear Button */}
       <button className="clear-btn" onClick={clearFilters}>
         Clear Filters
       </button>

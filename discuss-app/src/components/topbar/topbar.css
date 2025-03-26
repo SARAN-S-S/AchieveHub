@@ -70,11 +70,31 @@
   padding: 8px 18px;
   border-radius: 5px;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .topListItem:hover {
   background-color: #b9a7a3;
   color: #fff;
+}
+
+.topListItem::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #4a6bff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.topListItem:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .link {
@@ -133,13 +153,14 @@
   color: #fff;
 }
 
-/* Custom Hamburger Menu Styles */
+/* Mobile Menu Icon */
+/* Updated Mobile Menu Icon with left-aligned varying lines */
 .mobile-menu-icon {
   display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
-  height: 21px;
+  height: 24px;
   cursor: pointer;
   z-index: 1002;
   margin-left: 20px;
@@ -148,19 +169,33 @@
 }
 
 .menu-line {
-  width: 100%;
-  height: 3px;
   background-color: #7a33ff;
   border-radius: 3px;
   transition: all 0.3s ease;
+ 
+  align-self: flex-start;
 }
 
-.mobile-menu-icon:hover .menu-line {
-  background-color: #5a1fd1;
+.menu-line:nth-child(1) {
+  height: 4px;
+  width: 100%;
 }
 
+.menu-line:nth-child(2) {
+  height: 3px;
+  width: 80%; 
+}
+
+.menu-line:nth-child(3) {
+  height: 2px;
+  width: 60%; 
+}
+
+/* Active state transformations remain the same */
 .mobile-menu-icon.active .menu-line:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
+  height: 3px;
+  width: 100%;
 }
 
 .mobile-menu-icon.active .menu-line:nth-child(2) {
@@ -169,9 +204,12 @@
 
 .mobile-menu-icon.active .menu-line:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
+  height: 3px;
+  width: 100%;
 }
 
-/* Close Icon Styles */
+
+/* Close Icon */
 .closeIcon {
   display: none;
   position: absolute;
@@ -203,7 +241,42 @@
   background-color: #f0f0f0;
 }
 
-/* Responsive Styles */
+/* 1080px - Large Desktop */
+@media screen and (max-width: 1080px) {
+  .top {
+    padding: 0 15px;
+  }
+  
+  .topLeft {
+    margin-left: 15px;
+  }
+  
+  .topLeft i {
+    margin-left: 30px;
+    font-size: 22px;
+  }
+  
+  .topLeft .profile-text {
+    font-size: 18px;
+  }
+  
+  .topListItem {
+    font-size: 16px;
+    padding: 8px 15px;
+  }
+  
+  .topRight .topImg {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .topRight .topListItem {
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+}
+
+/* 768px - Tablet */
 @media screen and (max-width: 768px) {
   .topList {
     display: none;
@@ -213,14 +286,14 @@
     display: flex;
   }
 
-  /* Mobile menu styles */
+  /* Mobile Menu */
   .topList.active {
     display: flex;
     position: fixed;
     top: 0;
     left: 0;
-    width: 50%;
-    max-width: 300px;
+    width: 70%;
+    max-width: 280px;
     height: 100vh;
     background-color: #f0f8ff;
     flex-direction: column;
@@ -233,7 +306,7 @@
   }
 
   .topListItem {
-    margin: 10px 0;
+    margin: 12px 0;
     font-size: 16px;
     color: #333;
     width: 80%;
@@ -241,12 +314,15 @@
     padding: 12px;
     border-radius: 6px;
     background-color: transparent;
-    transition: all 0.3s ease;
   }
 
   .topListItem:hover {
     background-color: #d4e6ff;
     color: #333;
+  }
+
+  .topListItem::after {
+    display: none;
   }
 
   .closeIcon {
@@ -263,6 +339,7 @@
   }
 }
 
+/* 480px - Mobile */
 @media screen and (max-width: 480px) {
   .top {
     height: 55px;
@@ -270,11 +347,11 @@
   }
 
   .topLeft {
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   .topLeft i {
-    font-size: 22px;
+    font-size: 20px;
     margin-left: 10px;
     margin-right: 8px;
   }
@@ -294,13 +371,13 @@
   }
 
   .topList.active {
-    width: 50%;
-    padding-top: 70px;
+    width: 45%;
+    padding-top: 60px;
   }
 
   .topListItem {
     font-size: 15px;
-    margin: 8px 0;
+    margin: 10px 0;
     padding: 10px;
   }
 
@@ -317,32 +394,26 @@
   }
 }
 
-/* Enhanced hover effects */
-.topListItem {
-  position: relative;
-  overflow: hidden;
-}
-
-.topListItem::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #4a6bff;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.topListItem:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-@media screen and (max-width: 768px) {
-  .topListItem::after {
-    display: none;
+/* 360px - Small Mobile */
+@media screen and (max-width: 360px) {
+  .topLeft i {
+    margin-left: 5px;
+  }
+  
+  .topLeft .profile-text {
+    font-size: 15px;
+  }
+  
+  .mobile-menu-icon {
+    margin-left: 8px;
+  }
+  
+  .topList.active {
+    width: 85%;
+  }
+  
+  .topRight .topImg {
+    width: 30px;
+    height: 30px;
   }
 }

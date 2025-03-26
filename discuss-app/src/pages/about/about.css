@@ -1,4 +1,3 @@
-
 .about {
   background-color: #d7edd7;
   min-height: 100vh; 
@@ -40,6 +39,13 @@
   height: auto;
   border-radius: 10px;
   margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.aboutImg:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .aboutItem p {
@@ -95,84 +101,129 @@
   margin-top: 20px;
 }
 
-
-/* responsive codes */
-@media (max-width: 768px) {
+/* Responsive Design */
+@media (max-width: 1080px) {
   .aboutItem {
-    padding: 15px;
-    margin: 10px;
+    max-width: 700px;
+    padding: 25px;
+    transition: all 0.3s ease;
   }
 
   .aboutTitle {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    transition: font-size 0.3s ease;
+  }
+
+  .mainpoints h1 {
+    font-size: 1.7em;
+    transition: font-size 0.3s ease;
+  }
+
+  .aboutItem p {
+    font-size: 1.05em;
+    transition: font-size 0.3s ease;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutItem {
+    padding: 20px;
+    margin: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .aboutTitle {
+    font-size: 1.6em;
+    transition: font-size 0.3s ease;
   }
 
   .aboutImg {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    transition: margin 0.3s ease;
   }
 
   .aboutItem p {
     font-size: 1em;
-    text-indent: 1.5em;
+    text-indent: 1.8em;
+    transition: all 0.3s ease;
   }
 
   .mainpoints h1 {
-    font-size: 1.5em;
+    font-size: 1.6em;
+    transition: font-size 0.3s ease;
   }
 
   .mainpoints p {
     font-size: 1em;
+    transition: font-size 0.3s ease;
   }
 
   .mainpoints p:first-letter {
-    font-size: 1.3em;
+    font-size: 1.4em;
+    transition: font-size 0.3s ease;
   }
 
   .subpoints h3, .subpoints h4 {
-    font-size: 1.2em;
+    font-size: 1.15em;
+    transition: font-size 0.3s ease;
   }
 
   .subpoints p {
-    font-size: 0.9em;
+    font-size: 0.95em;
+    transition: font-size 0.3s ease;
   }
 }
 
 @media (max-width: 480px) {
+  .about {
+    padding: 15px;
+    transition: padding 0.3s ease;
+  }
+
   .aboutItem {
-    padding: 10px;
-    margin: 5px;
+    padding: 15px;
+    margin: 10px;
+    transition: all 0.3s ease;
   }
 
   .aboutTitle {
-    font-size: 1.2em;
+    font-size: 1.4em;
+    transition: font-size 0.3s ease;
   }
 
   .aboutImg {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    transition: margin 0.3s ease;
   }
 
   .aboutItem p {
-    font-size: 0.9em;
-    text-indent: 1em;
+    font-size: 0.95em;
+    text-indent: 1.5em;
+    transition: all 0.3s ease;
   }
 
   .mainpoints h1 {
-    font-size: 1.3em;
+    font-size: 1.4em;
+    transition: font-size 0.3s ease;
   }
 
   .mainpoints p {
-    font-size: 0.9em;
+    font-size: 0.95em;
+    transition: font-size 0.3s ease;
   }
 
   .mainpoints p:first-letter {
-    font-size: 1.2em;
+    font-size: 1.3em;
+    transition: font-size 0.3s ease;
   }
 
   .subpoints h3, .subpoints h4 {
     font-size: 1.1em;
+    transition: font-size 0.3s ease;
   }
 
   .subpoints p {
-    font-size: 0.8em;
+    font-size: 0.9em;
+    transition: font-size 0.3s ease;
   }
 }

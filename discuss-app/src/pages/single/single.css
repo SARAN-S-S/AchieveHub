@@ -1,15 +1,29 @@
 .single {
     display: flex;
+    gap: 20px; /* Adds space between elements */
+}
+
+/* For medium screens (Tablets) */
+@media (max-width: 1080px) {
+    .single {
+        gap: 15px;
+    }
 }
 
 @media (max-width: 768px) {
     .single {
         flex-direction: column-reverse;
+        align-items: center;
+        gap: 10px;
     }
 }
 
+/* For small screens (Mobile) */
 @media (max-width: 480px) {
     .single {
         flex-direction: column-reverse; 
+        padding: 10px;
+        gap: 8px;
+        width: 100%;
     }
 }

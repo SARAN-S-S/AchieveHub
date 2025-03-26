@@ -1,23 +1,25 @@
-
 .login {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   min-height: 100vh;
-  width: 100vw; 
-  overflow: hidden; 
+  width: 100vw;
+  overflow: hidden;
   background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #e3f2fd 100%);
 }
 
-.loginContainer  {
+.loginContainer {
   background-color: #ffffff;
-  padding: 70px 20px; 
+  padding: 70px 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 400px; 
-  max-height: 90vh; 
+  width: 400px;
+  max-height: 90vh;
   overflow: hidden;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .loginImageContainer {
@@ -43,18 +45,26 @@
   margin-bottom: 20px;
 }
 
+/* Google Login Button Container */
+.loginContainer > div:first-of-type {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
 .signupSubmit {
   background-color: #2196f3;
   color: white;
   border: 1px solid #1f0606;
-  padding: 8px 30px; 
+  padding: 8px 30px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: 300;
-  font-size: 1rem; 
+  font-size: 1rem;
   transition: background-color 0.3s ease;
   display: block;
-  margin: 20px auto 0; 
+  margin: 20px auto 0;
 }
 
 .signupSubmit:hover {
@@ -63,11 +73,38 @@
   color: black;
 }
 
-/* Responsive Design */
+/* Responsive Design for 1080px (Full HD) */
+@media (max-width: 1080px) {
+  .loginContainer {
+    width: 380px;
+    padding: 60px 20px;
+  }
+
+  .loginImage {
+    max-width: 230px;
+  }
+
+  .loginContainer h1 {
+    font-size: 2rem;
+  }
+
+  .loginContainer h2 {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+
+  .signupSubmit {
+    font-size: 0.95rem;
+    padding: 8px 25px;
+  }
+}
+
+/* Responsive Design for Tablets (768px) */
 @media (max-width: 768px) {
   .loginContainer {
     width: 90%;
-    padding: 20px;
+    max-width: 350px;
+    padding: 50px 20px;
   }
 
   .loginImage {
@@ -80,22 +117,54 @@
 
   .loginContainer h2 {
     font-size: 1.5rem;
+    margin-bottom: 16px;
   }
 
   .signupSubmit {
     font-size: 0.9rem;
     padding: 8px 20px;
+    margin-top: 18px;
   }
 }
 
+/* Responsive Design for Mobile Phones (480px) */
 @media (max-width: 480px) {
   .loginContainer {
-    padding: 15px;
+    padding: 40px 15px;
     width: 95%;
+    max-width: 320px;
   }
 
   .loginImage {
-    max-width: 150px;
+    max-width: 180px;
+  }
+
+  .loginContainer h1 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+
+  .loginContainer h2 {
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+  }
+
+  .signupSubmit {
+    font-size: 0.85rem;
+    padding: 7px 18px;
+    margin-top: 16px;
+  }
+}
+
+/* Responsive Design for Very Small Phones (360px) */
+@media (max-width: 360px) {
+  .loginContainer {
+    padding: 30px 12px;
+    max-width: 280px;
+  }
+
+  .loginImage {
+    max-width: 160px;
   }
 
   .loginContainer h1 {
@@ -104,12 +173,10 @@
 
   .loginContainer h2 {
     font-size: 1.2rem;
-    margin-bottom: 15px;
   }
 
   .signupSubmit {
     font-size: 0.8rem;
-    padding: 6px 15px;
-    margin-top: 15px;
+    padding: 6px 16px;
   }
 }
