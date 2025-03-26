@@ -47,13 +47,17 @@ export default function Header() {
 
   return (
     <div className="header">
-      <div className="headerTitle">
-        <span className="headerTitleSm">
-          <i>
-            <strong>" Dream, transforms into thoughts. Thoughts, result into action. "</strong>
-          </i>
-        </span>
-      </div>
+      
+      {/* 
+        <div className="headerTitle">
+          <span className="headerTitleSm">
+            <i>
+              <strong>" Dream, transforms into thoughts. Thoughts, result into action. "</strong>
+            </i>
+          </span>
+        </div> 
+      */}
+
       <div className="carousel-container">
         <Slider ref={sliderRef} {...settings}>
           {images.map((image, index) => (

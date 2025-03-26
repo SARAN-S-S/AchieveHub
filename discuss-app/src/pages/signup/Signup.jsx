@@ -22,6 +22,11 @@ const admins = [
     password: "madhumitha@2004",
     username: "Madhu",
   },
+  {
+    email: "SENTHILKUMARP@bitsathy.ac.in",
+    password: "admin@bitsathy",
+    username: "Senthilkumar",
+  },
 ];
 
 export default function Signup() {
@@ -34,16 +39,17 @@ export default function Signup() {
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7733";
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const admin = admins.find(
-      (admin) => admin.email === email && admin.password === password
+      (admin) => admin.email.toLowerCase() === email.toLowerCase() && admin.password === password
     );
 
     if (admin) {
       try {
         const res = await axios.post(`${apiBaseUrl}/api/auth/admin-login`, {
-          email,
+          email: email.toLowerCase(),
           password,
           username: admin.username, 
         });
