@@ -124,7 +124,7 @@ export default function SinglePost() {
     };
 
     trackAndUpdateView();
-  }, [user, post._id]); // Only run when user or post._id changes
+  }, [user, post._id, apiBaseUrl]); // Only run when user or post._id changes
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
