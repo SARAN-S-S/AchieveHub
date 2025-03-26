@@ -1,7 +1,6 @@
-
 .usersUsersPage {
-  padding: 20px;
-  font-family: sans-serif;
+  padding: 30px;
+  font-family: 'Poppins', sans-serif;
   background-color: #f8f9fa;
   min-height: 100vh;
   display: flex;
@@ -10,402 +9,492 @@
 
 .usersUsersPage h1 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #343a40;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
 .usersUsersPage span {
   display: block;
   width: fit-content;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #b5c2c5;
-  color: #212121;
-  border-radius: 8px;
+  margin: 30px auto;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border-radius: 30px;
   font-weight: 600;
   text-align: center;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  margin-bottom: 50px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+  font-size: 1.3rem;
 }
 
 /* Count Grid Section */
 .usersChartInfo {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 25px;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .usersChartInfo .usersCountContainer {
-  background-color: #f0d4e3;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #ac3aa6;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  border: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.usersCountContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, #6a11cb, #2575fc);
 }
 
 .usersCountContainer:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
 }
 
 .usersCountContainer h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #495057;
+  margin-bottom: 15px;
 }
 
 .usersCountContainer .usersCountValue {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #007bff;
+  color: #2c3e50;
+  margin-bottom: 5px;
 }
 
 .usersCountContainer .usersPercentage {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-block;
 }
-
 
 /* BarChart Section */
 .usersBarChartContainer {
   width: 80%;
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 700px;
+  margin: 0 auto 70px;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  margin-bottom: 70px;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  border: 3px solid #07adb0;
 }
-
 
 .usersBarChartContainer canvas {
   max-width: 100% !important;
-  height: 300px !important; 
+  height: 350px !important;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
-  border: 3px solid #5a8aa8;
-  background-color: #f0f8ff;
+  padding: 10px;
 }
-
 
 /* Box Grid and Search */
 .usersBoxgrid {
   background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 3px solid #e0e0e0;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  border: 2px solid #e0e0e0;
+  box-sizing: border-box;
 }
 
 .usersSearchBar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.usersSearchWrapper {
+  justify-content: center;
+  margin-bottom: 25px;
   position: relative;
-  display: flex;
-  align-items: center;
+  width: 45%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .usersSearchBar input {
-  padding: 10px 8px 10px 30px;
-  border: 2px solid #4d6f8d;
+  padding: 12px 20px 12px 45px;
+  border: 2px solid #e0e0e0;
   border-radius: 30px;
   background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 250px;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .usersSearchBar input:focus {
-  border-color: #007bff;
+  border-color: #2575fc;
+  box-shadow: 0 2px 15px rgba(37, 117, 252, 0.2);
 }
 
 .usersSearchIcon {
   position: absolute;
-  left: 53px; 
-  color: #4d6f8d;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 1.1rem;
   pointer-events: none;
-  transition: color 0.3s;
 }
 
-.usersSearchIcon:hover {
-  color: #0e518d;
+/* Table styling */
+.usersTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgb(150, 133, 133);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border: 2px solid #b0b0b0;
+  min-width: 600px;
 }
 
+.usersTable th,
+.usersTable td {
+  padding: 15px;
+  text-align: center;
+  font-size: 0.95rem;
+  border: 1px solid #b0b0b0;
+}
+
+.usersTable th {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  border-bottom: 2px solid #b0b0b0;
+}
+
+.usersTable tr:hover {
+  background-color: #f0f7ff;
+}
+
+.usersTable tr:nth-child(even) {
+  background-color: #d2bcc4;
+}
+
+.usersTable tr:nth-child(odd) {
+  background-color: #e2e5e5;
+}
+
+.usertableContainer {
+  overflow-x: auto;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  -webkit-overflow-scrolling: touch;
+}
 
 /* Pagination */
 .usersPagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .usersPagination button {
-  padding: 11px 24px;
-  background: #007bff;
+  padding: 12px 25px;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 16;
-  font-weight: bold;
-  transition: background 0.3s;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.usersPagination button:hover {
-  background: #72b04f;
+.usersPagination button:first-child {
+  background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+}
+
+.usersPagination button:last-child {
+  background: linear-gradient(135deg, #FF5722 0%, #FF9800 100%);
+}
+
+.usersPagination button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .usersPagination button:disabled {
-  background: #ccc;
+  background: #e9ecef !important;
+  color: #adb5bd;
+  transform: none;
+  box-shadow: none;
   cursor: not-allowed;
 }
 
 .usersPagination span {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0 10px;
-  padding: 12px 15px; 
-  background-color: #94ab9e; 
-  color: #333333; 
-  border-radius: 5px; 
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  background-color: #9068a0;
+  color: #d8dde2;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+  margin: 0 5px;
 }
 
-
-/* Table styling */
-.usersTable {
-  width: 100%;
-  border-collapse: collapse;
-  background: rgb(179, 151, 151);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2.5px solid #a88383;
+/* 1080px Breakpoint */
+@media (max-width: 1080px) {
+  .usersUsersPage {
+    padding: 25px;
+  }
+  
+  .usersUsersPage h1 {
+    font-size: 2.2rem;
+  }
+  
+  .usersChartInfo {
+    gap: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .usersCountContainer h3 {
+    font-size: 1.2rem;
+  }
+  
+  .usersCountContainer .usersCountValue {
+    font-size: 2.2rem;
+  }
+  
+  .usersBarChartContainer {
+    width: 85%;
+    margin-bottom: 60px;
+  }
+  
+  .usersBarChartContainer canvas {
+    height: 320px !important;
+  }
+  
+  .usersBoxgrid {
+    padding: 25px;
+  }
 }
 
-.usersTable th,
-.usersTable td {
-  padding: 0 10px;
-  border-bottom: 1px solid #aa9292;
-  border-right: 1px solid #aa9292;
-  text-align: center;
-  font-size: 14px;
-  white-space: nowrap;
-  height: 35px;
-  background-color: white;
-}
-
-.usersTable th {
-  background-color: #007bff;
-  color: white;
-  font-weight: bold;
-}
-
-.usersTable tr:hover {
-  background-color: #f5f5f5;
-}
-
-.usertableContainer {
-  overflow-x: auto;
-  margin-bottom: 20px;
-
-}
-
-.usersTable tr:nth-child(even) {
-  background-color: #eef5ff;
-}
-
-.usersTable tr:nth-child(odd) {
-  background-color: #f9f9f9; 
-}
-
-
-/* Responsive adjustments for Tablets */
+/* 768px Breakpoint (Tablet) */
 @media (max-width: 768px) {
   .usersUsersPage {
-    padding: 15px;
-  }
-
-  .usersUsersPage h1 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-  }
-
-  .usersUsersPage span h2 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-
-  .usersChartInfo {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-
-  .usersChartInfo .usersCountContainer {
     padding: 20px;
   }
-
-  .usersCountContainer h3 {
-    font-size: 1rem;
+  
+  .usersUsersPage h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
   }
-
-  .usersCountContainer .usersCountValue {
-    font-size: 1.5rem;
+  
+  .usersUsersPage span {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    margin: 20px auto 30px;
   }
-
-  .usersCountContainer .usersPercentage {
-    font-size: 0.9rem;
-  }
-
-  .usersBarChartContainer {
-    width: 95%;
+  
+  .usersChartInfo {
+    grid-template-columns: 1fr;
+    gap: 15px;
     margin-bottom: 40px;
+    max-width: 500px;
   }
-
-  .usersBarChartContainer canvas {
-    height: 250px !important;
-  }
-
-  .usersBoxgrid {
-    padding: 15px;
-  }
-
-  .usersSearchBar input {
-    padding: 8px 8px 8px 25px;
+  
+  .usersCountContainer {
+    padding: 30px 15px !important;
     width: 100%;
-    font-size: 0.9rem;
+    max-width: 400px;
+    margin: 0 auto;
   }
-
+  
+  .usersCountContainer h3 {
+    font-size: 1.1rem;
+  }
+  
+  .usersCountContainer .usersCountValue {
+    font-size: 2rem;
+  }
+  
+  .usersBarChartContainer {
+    width: 90%;
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .usersBarChartContainer canvas {
+    height: 280px !important;
+  }
+  
+  .usersBoxgrid {
+    padding: 20px;
+  }
+  
+  .usersSearchBar {
+    width: 60%;
+    max-width: 100%;
+  }
+  
+  .usersSearchBar input {
+    padding: 10px 15px 10px 40px;
+    font-size: 0.95rem;
+  }
+  
   .usersSearchIcon {
-    left: 10px;
+    left: 15px;
     font-size: 1rem;
   }
-
-  .usertableContainer {
-    margin-bottom: 15px;
-  }
-
-  .usersTable {
-    font-size: 0.8rem;
-  }
-
+  
   .usersTable th,
   .usersTable td {
-    padding: 6px 8px;
-    white-space: normal;
-    word-break: break-all;
-  }
-
-  .usersPagination {
-    margin-top: 15px;
-  }
-
-  .usersPagination button {
-    padding: 8px 15px;
+    padding: 12px;
     font-size: 0.9rem;
   }
-
+  
+  .usersPagination {
+    margin-top: 25px;
+    gap: 8px;
+  }
+  
+  .usersPagination button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+  
   .usersPagination span {
     font-size: 1rem;
-    padding: 8px 10px;
+    padding: 8px 16px;
+    margin: 0 3px;
   }
 }
 
-/* Responsive adjustments for Mobile Phones */
+/* 480px Breakpoint (Mobile) */
 @media (max-width: 480px) {
   .usersUsersPage {
-    padding: 10px;
-  }
-
-  .usersUsersPage h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-
-  .usersUsersPage span h2 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-  }
-
-  .usersChartInfo {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .usersChartInfo .usersCountContainer {
     padding: 15px;
   }
-
-  .usersCountContainer h3 {
-    font-size: 0.9rem;
+  
+  .usersUsersPage h1 {
+    font-size: 1.7rem;
+    margin-bottom: 20px;
   }
-
-  .usersCountContainer .usersCountValue {
-    font-size: 1.3rem;
+  
+  .usersUsersPage span {
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin: 15px auto 25px;
   }
-
-  .usersCountContainer .usersPercentage {
-    font-size: 0.8rem;
-  }
-
-  .usersBarChartContainer {
-    width: 100%;
+  
+  .usersChartInfo {
+    gap: 12px;
     margin-bottom: 30px;
+    max-width: 100%;
+    padding: 0 10px;
   }
-
-  .usersBarChartContainer canvas {
-    height: 200px !important;
+  
+  .usersCountContainer {
+    padding: 25px 15px !important;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
   }
-
-  .usersBoxgrid {
-    padding: 10px;
-  }
-
-  .usersSearchBar input {
-    padding: 6px 6px 6px 20px;
-    font-size: 0.8rem;
-  }
-
-  .usersSearchIcon {
-    left: 8px;
-    font-size: 0.9rem;
-  }
-
-  .usertableContainer {
+  
+  .usersCountContainer h3 {
+    font-size: 1rem;
     margin-bottom: 10px;
   }
-
-  .usersTable {
-    font-size: 0.7rem;
+  
+  .usersCountContainer .usersCountValue {
+    font-size: 1.8rem;
   }
-
+  
+  .usersCountContainer .usersPercentage {
+    font-size: 1rem;
+  }
+  
+  .usersBarChartContainer {
+    width: 95%;
+    padding: 15px;
+    margin-bottom: 40px;
+  }
+  
+  .usersBarChartContainer canvas {
+    height: 240px !important;
+  }
+  
+  .usersBoxgrid {
+    padding: 15px;
+  }
+  
+  .usersSearchBar {
+    width: 80%;
+    max-width: 300px;
+  }
+  
+  .usersSearchBar input {
+    padding: 8px 12px 8px 35px;
+    font-size: 0.9rem;
+  }
+  
+  .usersSearchIcon {
+    left: 12px;
+    font-size: 0.9rem;
+  }
+  
   .usersTable th,
   .usersTable td {
-    padding: 4px 6px;
-  }
-
-  .usersPagination {
-    margin-top: 10px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .usersPagination button {
-    padding: 6px 12px;
+    padding: 12px 8px;
     font-size: 0.8rem;
-    margin: 5px 0;
   }
-
+  
+  .usersPagination {
+    gap: 6px;
+    margin-top: 20px;
+  }
+  
+  .usersPagination button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
   .usersPagination span {
     font-size: 0.9rem;
-    padding: 6px 8px;
+    padding: 8px 12px;
+    margin: 0 2px;
+    order: 0;
+    width: auto;
   }
 }

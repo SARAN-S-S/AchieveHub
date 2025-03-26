@@ -1,96 +1,104 @@
 .managePostsCustom {
-  padding: 20px;
-  background: #f8f9fa;
+  padding: 30px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
   min-height: 100vh;
-  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .managePostsCustom h1 {
-  margin-bottom: 20px;
   text-align: center;
-  color: #343a40;
-  font-size: 28px;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
 .containerCustom {
-  display: grid;
-  grid-template-rows: auto auto;
-  gap: 20px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 3px solid #ddd;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+  border: 2px solid #e0e0e0;
+  box-sizing: border-box;
 }
 
 .searchContainerCustom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  gap: 15px;
 }
 
 .searchWrapperCustom {
   position: relative;
-  display: flex;
-  align-items: center;
+  width: 290px;
+  max-width: 100%;
 }
 
 .searchContainerCustom input {
-  padding: 10px 8px 10px 30px;
-  border: 2px solid #4d6f8d;
+  padding: 12px 20px 12px 45px;
+  border: 2px solid #e0e0e0;
   border-radius: 30px;
   background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 250px;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .searchContainerCustom input:focus {
-  border-color: #007bff;
+  border-color: #2575fc;
+  box-shadow: 0 2px 15px rgba(37, 117, 252, 0.2);
 }
 
 .searchIconCustom {
   position: absolute;
-  left: 10px;
-  color: #4d6f8d;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 1.1rem;
   pointer-events: none;
-  transition: color 0.3s;
 }
 
-.searchIconCustom:hover {
-  color: #111b24;
-}
-
-.searchContainerCustom .bulkDeleteButtonCustom {
-  padding: 8px 20px;
-  background: #dc3545;
+.bulkDeleteButtonCustom {
+  padding: 12px 25px;
+  background: red;
   color: white;
   border: 2px solid black;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background 0.3s, transform 0.2s;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .bulkDeleteButtonCustom:hover {
-  background: white;
-  color: black;
-  border-color: 2px solid #007bff;
+  background: rgb(255, 255, 255);
+  color: rgb(15, 0, 0);
 }
 
 .customPostsTable {
   width: 100%;
   border-collapse: collapse;
-  background: rgb(179, 151, 151);
+  background: rgb(0, 141, 134);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2.5px solid #a88383;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border: 2px solid #b0b0b0;
+  min-width: 1200px;
 }
 
-.customPostsTable th, .customPostsTable td {
+.customPostsTable th,
+.customPostsTable td {
   padding: 0 70px;
   border-bottom: 1px solid #aa9292;
   border-right: 1px solid #aa9292;
@@ -101,9 +109,12 @@
 }
 
 .customPostsTable th {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
   color: white;
-  font-weight: bold;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  border-bottom: 2px solid #b0b0b0;
 }
 
 .customPostsTable tr:nth-child(even) {
@@ -119,45 +130,66 @@
   cursor: pointer;
 }
 
+.tableContainerCustom {
+  overflow-x: auto;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
 .paginationCustom {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .paginationCustom button {
-  padding: 11px 24px;
-  background: #007bff;
+  padding: 12px 25px;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 16;
-  font-weight: bold;
-  transition: background 0.3s;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.paginationCustom button:hover {
-  background: #72b04f;
+.paginationCustom button:first-child {
+  background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+}
+
+.paginationCustom button:last-child {
+  background: linear-gradient(135deg, #FF5722 0%, #FF9800 100%);
+}
+
+.paginationCustom button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .paginationCustom button:disabled {
-  background: #ccc;
+  background: #e9ecef !important;
+  color: #adb5bd;
+  transform: none;
+  box-shadow: none;
   cursor: not-allowed;
 }
 
 .paginationCustom span {
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 15px;
-  margin-right: 15px;
-  padding: 12px 15px;
-  background-color: #ab9494; 
-  color: #333; 
-  border-radius: 5px; 
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  background-color: #9068a0;
+  color: #d8dde2;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+  margin: 0 5px;
 }
-
 
 .loadingContainerCustom {
   display: flex;
@@ -176,7 +208,7 @@
 
 .spinnerCustom {
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #007bff;
+  border-left-color: #6a11cb;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -184,30 +216,8 @@
 }
 
 @keyframes spinCustom {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.tableContainerCustom {
-  overflow-x: auto;
-  margin-bottom: 20px;
-}
-
-.actionLinkCustom {
-  cursor: pointer;
-  color: #007bff;
-  text-decoration: none;
-  margin: 0 5px;
-  display: inline-flex;
-  align-items: center;
-}
-
-.actionLinkCustom:hover {
-  color: #0056b3;
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .noPostsContainerCustom {
@@ -225,7 +235,7 @@
   background-color: #fff9f0;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   border: 2px solid #f0e0d0;
 }
 
@@ -241,165 +251,238 @@
   max-width: 300px;
 }
 
-/* Responsive Design for Mobile Phones (320px – 480px) and Tablets (481px – 768px) */
-@media (max-width: 768px) {
+.actionLinkCustom {
+  cursor: pointer;
+  color: #6a11cb;
+  text-decoration: none;
+  margin: 0 5px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.actionLinkCustom:hover {
+  color: #2575fc;
+  transform: translateY(-1px);
+}
+
+/* 1080px Breakpoint */
+@media (max-width: 1080px) {
   .managePostsCustom {
-    padding: 10px;
+    padding: 25px;
   }
-
+  
   .managePostsCustom h1 {
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: 2.2rem;
   }
-
+  
   .containerCustom {
-    padding: 15px;
-    border-radius: 6px;
+    padding: 25px;
   }
-
-  .searchContainerCustom {
-    flex-direction: column;
-    gap: 10px;
-    align-items: stretch;
+  
+  .searchWrapperCustom {
+    width: 300px;
   }
-
-  .searchWrapperCustom input {
-    width: 100%;
-    padding: 8px 8px 8px 30px;
-    font-size: 14px;
+  
+  .searchContainerCustom input {
+    padding: 10px 15px 10px 40px;
+    font-size: 0.95rem;
   }
-
+  
+  .searchIconCustom {
+    left: 15px;
+    font-size: 1rem;
+  }
+  
   .bulkDeleteButtonCustom {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
   }
-
-  .customPostsTable {
-    border: 1px solid #ddd;
-  }
-
-  .customPostsTable th,
-  .customPostsTable td {
-    padding: 8px;
-    font-size: 12px;
-    white-space: normal;
-  }
-
-  .customPostsTable th {
-    font-size: 13px;
-  }
-
-  .customPostsTable td input[type="checkbox"] {
-    transform: scale(1.1);
-  }
-
-  .paginationCustom {
-    flex-direction: column;
-    gap: 10px;
-  }
-
+  
   .paginationCustom button {
-    padding: 8px 16px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
   }
-
+  
   .paginationCustom span {
-    font-size: 14px;
-    margin: 5px 0;
-    padding: 8px 12px;
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin: 0 3px;
   }
-
+  
   .loadingMessageCustom {
     font-size: 1.2rem;
   }
+  
+  .spinnerCustom {
+    width: 35px;
+    height: 35px;
+  }
+}
 
+/* 768px Breakpoint (Tablet) */
+@media (max-width: 768px) {
+  .managePostsCustom {
+    padding: 20px;
+  }
+  
+  .managePostsCustom h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+  
+  .containerCustom {
+    padding: 20px;
+  }
+  
+  .searchContainerCustom {
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .searchWrapperCustom {
+    width: 40%;
+  }
+  
+  .searchContainerCustom input {
+    padding: 10px 15px 10px 40px;
+    font-size: 0.9rem;
+  }
+  
+  .bulkDeleteButtonCustom {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .customPostsTable th,
+  .customPostsTable td {
+    padding: 0 50px;
+    font-size: 13px;
+  }
+  
+  .paginationCustom {
+    margin-top: 25px;
+    gap: 8px;
+  }
+  
+  .paginationCustom button {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+  
+  .paginationCustom span {
+    font-size: 0.95rem;
+    padding: 8px 14px;
+  }
+  
+  .loadingMessageCustom {
+    font-size: 1.1rem;
+  }
+  
   .spinnerCustom {
     width: 30px;
     height: 30px;
   }
-
+  
   .noPostsContainerCustom {
-    height: 150px;
+    height: 180px;
   }
-
+  
   .noPostsContentCustom {
-    padding: 20px;
-    border-radius: 10px;
+    padding: 25px;
   }
-
+  
   .noPostsEmojiCustom {
-    font-size: 2em;
-  }
-
-  .noPostsMessageCustom {
-    font-size: 1em;
+    font-size: 2.5em;
   }
 }
 
-/* Specific adjustments for Mobile Phones (320px – 480px) */
+/* 480px Breakpoint (Mobile) */
 @media (max-width: 480px) {
+  .managePostsCustom {
+    padding: 15px;
+  }
+  
   .managePostsCustom h1 {
-    font-size: 20px;
+    font-size: 1.7rem;
+    margin-bottom: 20px;
   }
-
+  
   .containerCustom {
-    padding: 10px;
+    padding: 15px;
   }
-
-  .searchWrapperCustom input {
-    padding: 6px 6px 6px 28px;
-    font-size: 12px;
+  
+  .searchContainerCustom {
+    flex-direction: row;
+    gap: 8px;
   }
-
+  
+  .searchWrapperCustom {
+    width: 55%;
+  }
+  
+  .searchContainerCustom input {
+    padding: 8px 12px 8px 35px;
+    font-size: 0.85rem;
+  }
+  
+  .searchIconCustom {
+    left: 12px;
+    font-size: 0.9rem;
+  }
+  
   .bulkDeleteButtonCustom {
-    padding: 8px;
-    font-size: 12px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
   }
-
+  
   .customPostsTable th,
   .customPostsTable td {
-    padding: 6px;
-    font-size: 11px;
-  }
-
-  .customPostsTable th {
+    padding: 0 30px;
     font-size: 12px;
+    height: 30px;
   }
-
+  
+  .paginationCustom {
+    gap: 6px;
+    margin-top: 20px;
+  }
+  
   .paginationCustom button {
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
   }
-
+  
   .paginationCustom span {
-    font-size: 12px;
-    padding: 6px 10px;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    margin: 0 2px;
   }
-
+  
   .loadingMessageCustom {
     font-size: 1rem;
+    margin-bottom: 15px;
   }
-
+  
   .spinnerCustom {
     width: 25px;
     height: 25px;
   }
-
+  
   .noPostsContainerCustom {
-    height: 120px;
+    height: 150px;
   }
-
+  
   .noPostsContentCustom {
-    padding: 15px;
-    border-radius: 8px;
+    padding: 20px;
   }
-
+  
   .noPostsEmojiCustom {
-    font-size: 1.5em;
+    font-size: 2em;
   }
-
+  
   .noPostsMessageCustom {
-    font-size: 0.9em;
+    font-size: 0.95rem;
   }
 }

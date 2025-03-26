@@ -1,7 +1,14 @@
 .postForReview {
   padding: 20px;
-  background-color: #e3f0ff; 
+  background-color: #e3f0ff;
   min-height: 100vh;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .postForReviewWrapper {
@@ -15,11 +22,11 @@
   border: 2px solid rgba(0, 119, 182, 0.15);
   border-top: 6px solid #4e73df;
   border-bottom: 6px solid #4e73df;
+  box-sizing: border-box;
 }
 
 .singlePostImg {
   width: 600px;
-  height: 400px;
   height: 400px;
   object-fit: cover;
   border-radius: 10px;
@@ -416,21 +423,53 @@
 
 
 /* Responsive styles for tablets */
-@media (max-width: 768px) {
+/* Tablet view (768px - 1080px) */
+@media (max-width: 1080px) {
   .postForReviewWrapper {
     width: 95%;
-    padding: 30px 15px;
-    margin: 15px auto;
+    padding: 40px 20px;
   }
 
   .singlePostImg {
     width: 100%;
+    max-width: 600px;
     height: auto;
-    margin-bottom: 15px;
+    aspect-ratio: 3/2;
   }
 
   .siglePostTitle {
     font-size: 1.8rem;
+  }
+
+  .reviewVideoUploadContainer {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .reviewVideoPlayer {
+    max-width: 550px;
+  }
+
+  .no-video-message {
+    width: 50%;
+  }
+}
+
+/* Tablet view (768px and below) */
+@media (max-width: 768px) {
+  .postForReview {
+    padding: 15px;
+  }
+
+  .postForReviewWrapper {
+    padding: 30px 15px;
+    width: 98%;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+  }
+
+  .siglePostTitle {
+    font-size: 1.7rem;
     margin-bottom: 15px;
   }
 
@@ -441,15 +480,11 @@
   .tag {
     font-size: 14px;
     padding: 5px 10px;
-    margin-right: 6px;
-    margin-bottom: 4px;
   }
 
   .singlePostInfo {
     font-size: 14px;
-    margin-bottom: 15px;
     flex-direction: column;
-    align-items: flex-start;
     gap: 5px;
   }
 
@@ -458,110 +493,44 @@
     line-height: 24px;
   }
 
-  .approvalSection {
-    margin-top: 15px;
-  }
-
-  .approvalSection select,
-  .approvalSection textarea,
-  .approvalSection button {
-    font-size: 14px;
-    padding: 8px;
-  }
-
   .approvalSection select {
     width: 50%;
   }
 
-  .likeContainer {
-    margin-top: 15px;
-  }
-
-  .likeIcon {
-    font-size: 20px;
-    margin-right: 8px;
-  }
-
-  .updateSuccessMessage {
-    font-size: 16px;
-  }
-
-  .postForReviewHeader h1 {
-    font-size: 2em;
-    margin-bottom: 8px;
-  }
-
-  .postIdDisplay {
-    font-size: 0.9em;
-  }
-
-  .review-loading-message {
-    font-size: 1.3rem;
-    padding: 20px 40px;
-    gap: 10px;
-  }
-
-  .review-loading-spinner {
-    width: 35px;
-    height: 35px;
-    border-width: 3px;
-    border-top-width: 3px;
-  }
-
-  .review-error-message {
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .singleVideoUploadContainer {
-    margin-left: 50px;
-    margin-right: 50px;
+  .reviewVideoUploadContainer {
+    margin-left: 30px;
+    margin-right: 30px;
     width: 55px;
     height: 55px;
   }
 
-  .singleVideoUploadContainer i {
+  .reviewVideoUploadContainer i {
     font-size: 24px;
   }
 
-  .singleVideoPlayer {
-    width: 90%;
-  }
-
-  .singleVideoButtons {
+  .reviewVideoButtons {
     flex-direction: column;
     align-items: center;
   }
 
-  .singleVideoButton,
-  .singleRemoveVideoButton {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-  }
-
   .no-video-message {
-    width: 50%;
+    width: 60%;
     font-size: 16px;
-    padding: 12px;
   }
 }
 
-/* Responsive styles for mobile phones */
+/* Mobile view (480px and below) */
 @media (max-width: 480px) {
   .postForReview {
     padding: 10px;
   }
 
   .postForReviewWrapper {
+    padding: 25px 10px;
     width: 100%;
-    padding: 20px 10px;
-    margin: 10px auto;
-  }
-
-  .singlePostImg {
-    margin-bottom: 10px;
     border-radius: 8px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
   }
 
   .siglePostTitle {
@@ -576,14 +545,10 @@
   .tag {
     font-size: 12px;
     padding: 4px 8px;
-    margin-right: 4px;
-    margin-bottom: 3px;
   }
 
   .singlePostInfo {
     font-size: 12px;
-    margin-bottom: 10px;
-    gap: 3px;
   }
 
   .singlePostDesc {
@@ -591,145 +556,68 @@
     line-height: 20px;
   }
 
-  .approvalSection {
-    margin-top: 10px;
-  }
-
-  .approvalSection select,
-  .approvalSection textarea,
-  .approvalSection button {
-    font-size: 12px;
-    padding: 6px;
-  }
-
   .approvalSection select {
     width: 70%;
+    font-size: 14px;
   }
 
   .approvalSection button {
     padding: 8px 20px;
-    font-size: 12px;
-  }
-
-  .likeContainer {
-    margin-top: 10px;
-  }
-
-  .likeIcon {
-    font-size: 18px;
-    margin-right: 6px;
-  }
-
-  .like-count {
     font-size: 14px;
   }
 
-  .updateSuccessMessage {
-    font-size: 14px;
-  }
-
-  .postForReviewHeader h1 {
-    font-size: 1.8em;
-    margin-bottom: 6px;
-  }
-
-  .postIdDisplay {
-    font-size: 0.8em;
-  }
-
-  .review-loading-message {
-    font-size: 1rem;
-    padding: 15px 30px;
-    gap: 8px;
-  }
-
-  .review-loading-spinner {
-    width: 30px;
-    height: 30px;
-    border-width: 3px;
-    border-top-width: 3px;
-  }
-
-  .review-error-message {
-    font-size: 10px;
-    padding: 6px;
-  }
-
-  .writeFormGroup {
-    margin-bottom: 10px;
-  }
-
-  .singlePostTitleInput {
-    font-size: 1.3rem;
-    padding: 8px;
-  }
-
-  .writeInput {
-    padding: 8px;
-    font-size: 1rem;
-  }
-
-  .singlePostDescInput {
-    padding: 8px;
-    font-size: 1rem;
-    line-height: 1.3rem;
-  }
-
-  .singlePostButton {
-    padding: 8px 15px;
-    font-size: 1rem;
-  }
-
-  .image-edit-section {
-    margin-bottom: 15px;
-  }
-
-  .writeImg {
-    max-height: 200px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-
-  .error-message {
-    font-size: 14px;
-    padding: 8px;
-    max-width: 300px;
-  }
-
-  .singleVideoUploadContainer {
-    width: 45px;
-    height: 45px;
+  .reviewVideoUploadContainer {
     margin-left: 20px;
     margin-right: 20px;
+    width: 45px;
+    height: 45px;
   }
 
-  .singleVideoUploadContainer i {
+  .reviewVideoUploadContainer i {
     font-size: 20px;
   }
 
-  .singleVideoContainer {
-    margin-top: 15px;
-  }
-
-  .singleVideoPlayer {
-    width: 100%;
-  }
-
-  .singleVideoButtons {
-    flex-direction: column;
+  .reviewVideoButtons {
     gap: 8px;
   }
 
-  .singleVideoButton,
-  .singleRemoveVideoButton {
+  .reviewVideoButton,
+  .reviewRemoveVideoButton {
     width: 90%;
     font-size: 14px;
-    padding: 8px;
   }
 
   .no-video-message {
-    width: 70%;
+    width: 80%;
     font-size: 14px;
     padding: 10px;
+  }
+
+  .postForReviewHeader h1 {
+    font-size: 1.8rem;
+  }
+
+  .postIdDisplay {
+    font-size: 0.9rem;
+  }
+}
+
+/* Very small screens (320px and below) */
+@media (max-width: 320px) {
+  .postForReviewWrapper {
+    padding: 20px 8px;
+  }
+
+  .siglePostTitle {
+    font-size: 1.3rem;
+  }
+
+  .approvalSection select {
+    width: 80%;
+  }
+
+  .no-video-message {
+    width: 90%;
+    font-size: 13px;
   }
 }

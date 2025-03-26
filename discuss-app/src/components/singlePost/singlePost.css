@@ -847,273 +847,247 @@ reply-icon {
     width: 30%;
     margin: 20px auto;
   }
-/* 1080px and above (default styles are already good for this) */
+
+
+  /* 1080px and above (large desktops) */
 @media (min-width: 1081px) {
-    .singlePostImg, .writeImg {
-        width: 700px;
-        height: 450px;
+    .singlePostTitleInput {
+        width: 90%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 12px 15px;
     }
-    
-    .siglePostTitle {
-        font-size: 32px;
-    }
-    
-    .singlePostDesc {
-        font-size: 19px;
-        line-height: 30px;
-    }
-    
-    .comments {
-        max-height: 600px;
-    }
-    
-    .singleVideoPlayer {
-        width: 650px;
-        height: 400px;
-    }
-    
-    .postContainer {
-        width: calc(100% - 120px);
-        margin-left: 60px;
-        margin-right: 60px;
-    }
-}
 
-/* 768px - 1080px */
-@media (max-width: 1080px) and (min-width: 769px) {
-    .singlePost {
-        margin: 15px;
-    }
-    
-    .singlePostImg, .writeImg {
-        width: 600px;
-        height: 380px;
-    }
-    
-    .siglePostTitle {
-        font-size: 28px;
-    }
-    
-    .singlePostDesc {
-        font-size: 18px;
-        line-height: 28px;
-    }
-    
-    .comments {
-        max-height: 500px;
-    }
-    
-    .singleVideoPlayer {
-        width: 550px;
-        height: 350px;
-    }
-    
     .postContainer {
-        width: calc(100% - 80px);
-        margin-left: 40px;
-        margin-right: 40px;
-    }
-    
-    .singleVideoUploadContainer {
-        margin-left: 80px;
-        margin-right: 80px;
-    }
-    
-    .like-container {
-        gap: 20px;
-    }
-    
-    .singlePostViews {
-        font-size: 16px;
-    }
-}
-
-/* 480px - 768px */
-@media (max-width: 768px) and (min-width: 481px) {
-    .singlePost {
-        margin: 10px;
-        border-width: 2px;
-    }
-    
-    .singlePostWrapper {
+        flex-direction: row;
+        align-items: center;
         padding: 15px;
     }
-    
-    .singlePostImg, .writeImg {
-        width: 100%;
-        height: 350px;
-    }
-    
-    .siglePostTitle {
-        font-size: 24px;
-        margin: 8px 0;
-    }
-    
-    .singlePostDesc {
-        font-size: 17px;
-        line-height: 26px;
-    }
-    
-    .singlePostInfo {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-    
-    .comments {
-        max-height: 450px;
-        margin-right: 10px;
-    }
-    
-    .singleVideoPlayer {
-        width: 100%;
-        height: 300px;
-    }
-    
-    .postContainer {
-        width: calc(100% - 40px);
-        margin-left: 20px;
-        margin-right: 20px;
-        flex-direction: column;
-    }
-    
-    .singlePostTitleInput {
-        width: 100%;
-        margin-left: 0;
-    }
-    
-    .singleVideoUploadContainer {
-        margin-left: 40px;
-        margin-right: 40px;
-        width: 60px;
-        height: 60px;
-    }
-    
-    .like-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .singlePostViews {
-        font-size: 15px;
-    }
-    
-    .tag {
-        font-size: 14px;
-        padding: 5px 10px;
-    }
-    
+
     .writeFormGroup {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        justify-content: space-between;
     }
-    
+
     .writeInput {
-        min-width: 150px;
+        min-width: 180px;
+        flex: 1;
     }
-    
-    .no-video-message {
-        width: 70%;
+
+    .singlePostDescInput {
+        width: 95%;
+        max-width: 900px;
     }
 }
 
-/* 480px and below */
-@media (max-width: 480px) {
-    .singlePost {
-        margin: 8px;
-        border-width: 1.5px;
+/* 768px - 1080px (tablets landscape/small desktops) */
+@media (max-width: 1080px) and (min-width: 769px) {
+    .singlePostTitleInput {
+        width: 90%;
+        margin-left: 0;
+        padding: 10px 12px;
+        font-size: 26px;
     }
-    
-    .singlePostWrapper {
-        padding: 10px;
-    }
-    
-    .singlePostImg, .writeImg {
-        width: 100%;
-        height: 250px;
-        border-width: 2px;
-    }
-    
-    .siglePostTitle {
-        font-size: 20px;
-        margin: 5px 0;
-    }
-    
-    .singlePostDesc {
-        font-size: 16px;
-        line-height: 24px;
-    }
-    
-    .singlePostEdit {
-        float: none;
-        display: flex;
-        justify-content: center;
-        margin-top: 5px;
-    }
-    
-    .comments {
-        max-height: 400px;
-        margin-right: 5px;
-        padding: 10px;
-    }
-    
-    .singleVideoPlayer {
-        width: 100%;
-        height: 220px;
-    }
-    
+
     .postContainer {
-        width: calc(100% - 20px);
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    .writeFormGroup {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .writeInput {
+        min-width: 150px;
+        flex: 1 1 40%;
+    }
+
+    .singlePostDescInput {
+        width: 95%;
+        max-width: 800px;
+    }
+
+    .comment-edit-textarea {
+        width: calc(90% - 20px);
+    }
+}
+
+/* 480px - 768px (tablets portrait/large phones) */
+@media (max-width: 768px) and (min-width: 481px) {
+    .singlePostTitleInput {
+        width: 90%;
+        margin-left: 0;
+        padding: 8px 10px;
+        font-size: 22px;
+        min-height: 48px;
+    }
+
+    .postContainer {
+        flex-direction: column;
+        padding: 10px;
         margin-left: 10px;
         margin-right: 10px;
+        width: calc(100% - 20px);
     }
-    
+
+    .writeFormGroup {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .writeInput {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .singlePostDescInput {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .comment-edit-textarea {
+        width: calc(100% - 20px);
+    }
+
     .singleVideoUploadContainer {
         margin-left: 20px;
         margin-right: 20px;
-        width: 50px;
-        height: 50px;
     }
-    
+
+    .singleVideoPlayer {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* 480px and below (small phones) */
+@media (max-width: 480px) {
+    .singlePostTitleInput {
+        width: 90%;
+        margin-left: 0;
+        padding: 6px 8px;
+        font-size: 18px;
+        min-height: 40px;
+    }
+
+    .postContainer {
+        flex-direction: column;
+        padding: 8px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: calc(100% - 10px);
+    }
+
+    .writeFormGroup {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .writeInput {
+        width: 100%;
+        margin-bottom: 6px;
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .singlePostDescInput {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .comment-edit-textarea {
+        width: calc(100% - 16px);
+        font-size: 14px;
+    }
+
+    .singleVideoUploadContainer {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 45px;
+        height: 45px;
+    }
+
     .singleVideoButtons {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .singleVideoButton,
     .singleRemoveVideoButton {
         width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .comments {
+        padding: 8px;
+        margin-right: 5px;
+    }
+
+    .reply-form textarea,
+    .commentForm textarea {
+        width: calc(100% - 16px);
+        font-size: 14px;
+    }
+}
+
+/* Additional overflow prevention rules */
+@media (max-width: 768px) {
+    .singlePost {
+        overflow-x: hidden;
+    }
+    
+    .singlePostWrapper {
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .singlePostImg, .writeImg {
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
     }
     
     .tag {
         font-size: 12px;
         padding: 4px 8px;
+        margin: 3px;
     }
     
-    .writeFormGroup {
-        flex-direction: column;
-    }
-    
-    .writeInput {
-        width: 100%;
-    }
-    
-    .comment-edit-textarea {
-        width: calc(100% - 20px);
-    }
-    
-    .no-video-message {
-        width: 90%;
-        font-size: 14px;
+    .comment {
         padding: 10px;
+        margin-bottom: 8px;
     }
     
-    .singlePostDescInput {
-        width: 95%;
+    .reply {
+        margin-left: 15px;
     }
     
     .singlePostButton {
-        width: 100px;
-        padding: 8px 15px;
+        width: 30%;
+        margin-right: 0;
     }
+}
+
+/* Prevent horizontal scrolling on all devices */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.singlePost {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Ensure textareas don't overflow their containers */
+textarea {
+    max-width: 100%;
+    box-sizing: border-box;
 }

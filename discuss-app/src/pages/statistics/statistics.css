@@ -1,15 +1,17 @@
-
 .statisStatisticsPage {
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
-  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  padding: 30px;
+  min-height: 100vh;
 }
 
 .statisStatisticsPage h1 {
   text-align: center;
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 80px;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
 /* Filters Section */
@@ -17,388 +19,308 @@
   display: flex;
   gap: 20px;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 
 .statisFilters select {
-  padding: 12px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
+  padding: 12px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
   font-size: 1.1rem;
-  background-color: #fff;
-  transition: border-color 0.3s;
-  width: 150px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  width: 180px;
 }
 
 .statisFilters select:focus {
-  border-color: #36a2eb;
-  outline: none;
+  border-color: #2575fc;
+  box-shadow: 0 2px 15px rgba(37, 117, 252, 0.2);
 }
 
-/* Stats Section */
+/* Stats Container */
 .statisStatsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  margin: 0 auto 70px;
+  max-width: 1200px;
+  justify-items: center;
 }
 
-.statisStatItem {
-  background-color: #f0d4e3;
-  padding: 20px;
-  border-radius: 8px;
+.statisTotalPosts {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
   text-align: center;
-  flex: 1 1 250px;
-  min-width: 250px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%; 
+  max-width: 400px; 
+  grid-column: 1 / -1; 
+  justify-self: center; 
+  
+}
+
+.statisTotalPosts h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.statisTotalPosts p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Stat Items */
+.statisStatItem {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  width: 100%; 
   max-width: 300px;
-  border: 2px solid #ac3aa6;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  margin-top: 10px;
+  grid-column: 1 / -1; 
+  justify-self: center; 
+}
+
+.statisStatItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, #6a11cb, #2575fc);
 }
 
 .statisStatItem:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
 }
 
 .statisStatItem h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: #495057;
+  margin-bottom: 15px;
 }
 
 .statisStatItem p {
-  font-size: 1rem;
-  color: #555;
-  margin: 5px 0;
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.statisStatItem p:first-of-type {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.statisStatItem p:last-of-type {
+  color: #28a745;
+  font-weight: 700;
+  background: rgba(40, 167, 69, 0.1);
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-block;
 }
 
 /* Charts Section */
 .statisCharts {
   width: 80%;
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 900px;
+  margin: 0 auto 70px;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  margin-bottom: 70px;
+  justify-content: center;
+  align-items: center;
 }
 
 .statisCharts canvas {
   max-width: 100% !important;
-  height: 300px !important; 
+  height: 400px !important;
   border-radius: 8px;
-  border: 3px solid #5a8aa8;
+  border: 3px solid #07adb0;
   background-color: #f0f8ff;
 }
 
 
-/* Total Posts Section */
-.statisTotalPosts {
-  background: #b1dfe1;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  width: 100%;
-  max-width: 350px;
-  border: 2px solid #1d8083;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.statisTotalPosts h3 {
-  font-size: 1.3rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.statisTotalPosts p {
-  font-size: 1.2rem;
-  color: #100101;
-  margin: 5px 0;
-}
-
-/* No Posts Message Styling */
-.statisNoPostsContainer {
+/* No Posts & Loading */
+.statisNoPostsContainer,
+.statisLoadingContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 300px;
 }
 
 .statisNoPostsContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
-  background-color: #fff9f0;
   padding: 30px;
+  background: white;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border: 2px solid #f0e0d0;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  max-width: 500px;
 }
 
 .statisNoPostsEmoji {
-  font-size: 3em;
-  margin-bottom: 15px;
-  color: #e6a157;
-}
-
-.statisNoPostsMessage {
-  font-size: 1.1em;
-  color: #777;
-  max-width: 300px;
-}
-
-/* Loading Message Styling */
-.statisLoadingContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  background: linear-gradient(135deg, #e0f7fa, #b2ebf2); 
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
-  padding: 30px; 
-}
-
-.statisLoadingMessage {
-  font-size: 2em; 
-  color: #2980b9; 
-  font-weight: 700;
-  margin-bottom: 25px; 
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
-  animation: pulse 1.5s infinite ease-in-out alternate; 
-  position: relative;
-  z-index: 1; 
-}
-
-
-.statisLoadingMessage::before {
-  content: '';
-  width: 60px; 
-  height: 60px;
-  border: 6px solid rgba(41, 128, 185, 0.3); 
-  border-top-color: #2980b9;
-  border-radius: 50%;
-  animation: spin 1.2s linear infinite; 
+  font-size: 3rem;
   margin-bottom: 20px;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.statisNoPostsMessage {
+  font-size: 1.2rem;
+  color: #495057;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
+.statisLoadingMessage {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  font-weight: 600;
 }
 
-/* Responsive Design for Tablets */
-@media (max-width: 768px) {
-  .statisStatisticsPage h1 {
-    font-size: 1.8rem;
-    margin-bottom: 60px;
+/* 1080px Breakpoint */
+@media (max-width: 1080px) {
+  .statisStatisticsPage {
+    padding: 25px;
   }
-
-  .statisFilters {
-    gap: 15px;
+  
+  .statisStatisticsPage h1 {
+    font-size: 2.2rem;
     margin-bottom: 40px;
   }
-
-  .statisFilters select {
-    padding: 10px;
-    font-size: 1rem;
-    width: 140px;
-  }
-
+  
   .statisStatsContainer {
-    gap: 15px;
-    margin-bottom: 80px;
+    max-width: 900px;
+    gap: 20px;
   }
-
+  
   .statisStatItem {
-    padding: 15px;
-    flex: 1 1 200px;
-    min-width: 200px;
-    max-width: 250px;
+    padding: 25px;
   }
-
-  .statisStatItem h3 {
-    font-size: 1.3rem;
-    margin-bottom: 8px;
-  }
-
-  .statisStatItem p {
-    font-size: 0.9rem;
-    margin: 4px 0;
-  }
-
+  
   .statisCharts {
-    width: 90%;
-    max-width: none;
-    margin-bottom: 60px;
+    width: 85%;
   }
-
+  
   .statisCharts canvas {
-    height: 250px !important;
-  }
-
-  .statisTotalPosts {
-    padding: 15px;
-    max-width: 300px;
-  }
-
-  .statisTotalPosts h3 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-  }
-
-  .statisTotalPosts p {
-    font-size: 1.1rem;
-  }
-
-  .statisNoPostsContainer {
-    height: 180px;
-  }
-
-  .statisNoPostsContent {
-    padding: 25px;
-  }
-
-  .statisNoPostsEmoji {
-    font-size: 2.5em;
-    margin-bottom: 12px;
-  }
-
-  .statisNoPostsMessage {
-    font-size: 1em;
-    max-width: 80%;
-  }
-
-  .statisLoadingContainer {
-    height: 160px;
-    padding: 25px;
-  }
-
-  .statisLoadingMessage {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-  }
-
-  .statisLoadingMessage::before {
-    width: 50px;
-    height: 50px;
-    border-width: 5px;
-    margin-bottom: 15px;
+    height: 350px !important;
   }
 }
 
-/* Responsive Design for Mobile Phones */
+/* 768px Breakpoint */
+@media (max-width: 768px) {
+  .statisStatisticsPage {
+    padding: 20px;
+  }
+  
+  .statisStatisticsPage h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .statisFilters {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .statisFilters select {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .statisStatsContainer {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    gap: 20px;
+  }
+  
+  .statisTotalPosts {
+    padding: 25px;
+  }
+  
+  .statisStatItem {
+    padding: 25px;
+  }
+  
+  .statisCharts {
+    width: 90%;
+    margin-bottom: 50px;
+  }
+  
+  .statisCharts canvas {
+    height: 300px !important;
+  }
+}
+
+/* 480px Breakpoint */
 @media (max-width: 480px) {
   .statisStatisticsPage {
     padding: 15px;
   }
-
+  
   .statisStatisticsPage h1 {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
   }
-
-  .statisFilters {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
-  }
-
+  
   .statisFilters select {
-    padding: 8px;
-    font-size: 0.9rem;
-    width: 90%;
-  }
-
-  .statisStatsContainer {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 60px;
-  }
-
-  .statisStatItem {
-    padding: 15px;
-    flex: 0 1 auto;
-    min-width: 80%;
-    max-width: 95%;
-  }
-
-  .statisStatItem h3 {
-    font-size: 1.2rem;
-    margin-bottom: 6px;
-  }
-
-  .statisStatItem p {
-    font-size: 0.8rem;
-    margin: 3px 0;
-  }
-
-  .statisCharts {
-    width: 95%;
-    margin-bottom: 50px;
-  }
-
-  .statisCharts canvas {
-    height: 200px !important;
-  }
-
-  .statisTotalPosts {
-    padding: 15px;
-    max-width: 90%;
-  }
-
-  .statisTotalPosts h3 {
-    font-size: 1.1rem;
-    margin-bottom: 6px;
-  }
-
-  .statisTotalPosts p {
+    padding: 10px 15px;
     font-size: 1rem;
   }
-
-  .statisNoPostsContainer {
-    height: 150px;
+  
+  .statisStatsContainer {
+    max-width: 300px;
+    gap: 15px;
   }
-
-  .statisNoPostsContent {
+  
+  .statisTotalPosts h3 {
+    font-size: 1.2rem;
+  }
+  
+  .statisTotalPosts p {
+    font-size: 1.8rem;
+  }
+  
+  .statisStatItem {
     padding: 20px;
+    max-width: 200px;
   }
-
-  .statisNoPostsEmoji {
-    font-size: 2em;
-    margin-bottom: 10px;
+  
+  .statisStatItem h3 {
+    font-size: 1.2rem;
   }
-
-  .statisNoPostsMessage {
-    font-size: 0.9em;
-    max-width: 90%;
+  
+  .statisStatItem p {
+    font-size: 1rem;
   }
-
+  
+  .statisCharts {
+    width: 95%;
+    margin-bottom: 40px;
+  }
+  
+  .statisCharts canvas {
+    height: 250px !important;
+  }
+  
+  .statisNoPostsContent,
   .statisLoadingContainer {
-    height: 140px;
     padding: 20px;
   }
-
-  .statisLoadingMessage {
-    font-size: 1.5em;
-    margin-bottom: 15px;
+  
+  .statisNoPostsEmoji {
+    font-size: 2.5rem;
   }
-
-  .statisLoadingMessage::before {
-    width: 40px;
-    height: 40px;
-    border-width: 4px;
-    margin-bottom: 10px;
+  
+  .statisNoPostsMessage,
+  .statisLoadingMessage {
+    font-size: 1.1rem;
   }
 }
