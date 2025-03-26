@@ -30,7 +30,7 @@ export default function Home() {
       setLoading(false);
     };
     fetchPosts();
-  }, [search]);
+  }, [search, apiBaseUrl]);
 
 
   const indexOfLastPost = currentPage * postsPerPage;

@@ -52,7 +52,8 @@ export default function Dashboard() {
 
     fetchUserStats();
     fetchPostStats();
-  }, [user, navigate]);
+  }, [user, navigate, apiBaseUrl]); 
+
 
   const menuItems = [
     { 
